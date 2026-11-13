@@ -40,12 +40,14 @@ def build_prompt(
     template: str,
     *,
     language: str,
+    language_name: str,
     region: dict[str, Any],
     treatment: dict[str, Any],
     diagnosis: dict[str, Any],
 ) -> str:
     return template.format(
         language=language,
+        language_name=language_name,
         region=_region_block(region, language),
         knowledge=_knowledge_block(treatment, language),
         diagnosis=json.dumps(diagnosis, ensure_ascii=False),

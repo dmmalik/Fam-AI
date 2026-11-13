@@ -90,6 +90,7 @@ class PiClient {
             latencyMs = json.getInt("latency_ms"),
             imageSha256 = json.getString("image_sha256"),
             adviceSource = json.getString("advice_source"),
+            adviceLanguage = json.optString("advice_language", ""),
             advice = AdviceText(
                 summary = advice.getString("summary"),
                 immediateActions = stringList(advice, "immediate_actions"),
@@ -119,5 +120,6 @@ data class RemoteDiagnosis(
     val latencyMs: Int,
     val imageSha256: String,
     val adviceSource: String,
+    val adviceLanguage: String,
     val advice: AdviceText,
 )

@@ -107,4 +107,21 @@
     <string name="record_missing">That row is not in the log.</string>
     <string name="cd_thumb">Small photo of the leaf</string>
     <string name="cd_back">Back</string>
+    <string name="note_english">The stored note is in English.</string>
+    <string name="pack_title">Language pack</string>
+    <string name="pack_body">This pack is the crop notes for %1$s. English, Hindi, and Swahili are already on this phone.</string>
+    <string name="pack_download">Download language pack</string>
+    <string name="pack_downloading">Downloading the language pack… %1$d%%</string>
+    <string name="pack_downloading_unknown">Downloading the language pack…</string>
+    <string name="pack_size">Size: %1$s</string>
+    <string name="pack_installed">Language pack saved</string>
+    <string name="pack_remove">Remove language pack</string>
+    <string name="pack_remove_confirm">Remove this language pack? Advice goes back to the English note.</string>
+    <string name="pack_remove_go">Remove</string>
+    <string name="pack_needs_pi">This pack comes from the field box. Save the Pi address and token, then try again.</string>
+    <string name="pack_failed">The language pack download stopped.</string>
+    <string name="pack_retry">Try again</string>
+    <string name="pack_waiting">Waiting for a connection.</string>
+    <string name="pack_paused_wifi">Waiting for Wi-Fi. Mobile data is off.</string>
+    <string name="pack_not_now">Not now</string>
 </resources>

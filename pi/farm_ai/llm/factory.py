@@ -59,12 +59,16 @@ def llm_for_vision(settings: Settings, vision_name: str):
     return create_llm(settings)
 
 
-def advise(llm, kb, *, language: str, region: dict, treatment: dict, diagnosis: dict) -> tuple[dict, str]:
+def advise(llm, kb, *, language: str, region: dict, treatment: dict, diagnosis: dict) -> tuple[dict, str, str]:
+    del treatment
+    label_id = str(diagnosis.get("label_id", ""))
+    notes, region_notes, stored = kb.localized(label_id, region, language)
     prompt = build_prompt(
         kb.prompt,
         language=language,
-        region=region,
-        treatment=treatment,
+        language_name=kb.language_name(language),
+        region=region_notes,
+        treatment=notes,
         diagnosis=diagnosis,
     )
     raw = None
@@ -74,5 +78,5 @@ def advise(llm, kb, *, language: str, region: dict, treatment: dict, diagnosis: 
         raw = None
     parsed = parse_advice(raw)
     if parsed:
-        return parsed, "llama"
-    return fallback_advice(treatment, region, language), "template"
+        return parsed, "llama", language
+    return fallback_advice(notes, region_notes, language), "template", stored

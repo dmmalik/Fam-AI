@@ -119,23 +119,25 @@ object PhoneModelFiles {
 object VisionReplyParser {
     const val MAX_OUTPUT_TOKENS = 384
 
-    fun prompt(labels: List<LabelInfo>, language: String, crop: String?): String {
-        val languageName = when (language) {
-            "hi" -> "Hindi"
-            "sw" -> "Swahili"
-            else -> "English"
-        }
+    fun prompt(labels: List<LabelInfo>, language: String, crop: String?, notes: String = ""): String {
+        val languageName = NAMES[language] ?: "English"
         val cropLine = if (crop.isNullOrBlank()) {
             "The grower did not name the crop."
         } else {
             "The grower says the crop is $crop. Prefer a label for that crop when it fits."
         }
         val list = labels.joinToString("\n") { "${it.id} | ${it.displayName} | ${it.crop} | ${it.kind}" }
+        val noteBlock = if (notes.isBlank()) {
+            ""
+        } else {
+            "Notes for the labels. They may be in English. Rewrite only what they say in $languageName. Do not add a product or a dose.\n$notes\n"
+        }
         return """
             The photo may show a leaf, a stem, or a whole plant, including plants that are not in the list, such as bamboo or mango.
             $cropLine
             Choose label_id from this list only when the photo matches one. Otherwise set label_id to unknown.
             $list
+            $noteBlock
             Always put the common name you see in plant, even when label_id is unknown. Bamboo stays bamboo.
             Do not write the word unknown in plant, disease, or summary. If it looks healthy, set disease to healthy.
             Return one JSON object and nothing else. Keys:
@@ -148,13 +150,61 @@ object VisionReplyParser {
         """.trimIndent()
     }
 
-    fun caution(language: String): String {
-        return when (language) {
-            "hi" -> "यह एक फ़ोटो पर फ़ोन मॉडल का अनुमान है, प्रयोगशाला जाँच नहीं।"
-            "sw" -> "Hii ni dhana ya modeli ya simu kutoka picha moja, si kipimo cha maabara."
-            else -> "This is a phone model guess from one photo, not a lab test."
-        }
-    }
+    fun caution(language: String): String = CAUTIONS[language] ?: CAUTIONS.getValue("en")
+
+    private val NAMES = mapOf(
+        "en" to "English",
+        "as" to "Assamese",
+        "bn" to "Bengali",
+        "brx" to "Bodo",
+        "doi" to "Dogri",
+        "gu" to "Gujarati",
+        "hi" to "Hindi",
+        "kn" to "Kannada",
+        "ks" to "Kashmiri",
+        "kok" to "Konkani",
+        "mai" to "Maithili",
+        "ml" to "Malayalam",
+        "mni" to "Manipuri",
+        "mr" to "Marathi",
+        "ne" to "Nepali",
+        "or" to "Odia",
+        "pa" to "Punjabi",
+        "sa" to "Sanskrit",
+        "sat" to "Santali",
+        "sd" to "Sindhi",
+        "ta" to "Tamil",
+        "te" to "Telugu",
+        "ur" to "Urdu",
+        "sw" to "Swahili",
+    )
+
+    private val CAUTIONS = mapOf(
+        "en" to "This is a phone model guess from one photo, not a lab test.",
+        "hi" to "यह एक फ़ोटो पर फ़ोन मॉडल का अनुमान है, प्रयोगशाला जाँच नहीं।",
+        "sw" to "Hii ni dhana ya modeli ya simu kutoka picha moja, si kipimo cha maabara.",
+        "as" to "এইটো এখন ফটোৰ পৰা ফোন মডেলৰ অনুমান, পৰীক্ষাগাৰৰ পৰীক্ষা নহয়।",
+        "bn" to "এটি একটি ছবি থেকে ফোন মডেলের অনুমান, পরীক্ষাগারের পরীক্ষা নয়।",
+        "brx" to "बेयो मोनसे सावगारिनिफ्राय फोन मोडेलनि अनुमान, प्रयोगशालानि जांच नङा।",
+        "doi" to "एह् इक फोटो ते फोन मॉडल दा अंदाजा ऐ, लैब दी जांच नेईं।",
+        "gu" to "આ એક ફોટા પરથી ફોન મોડેલનો અંદાજ છે, પ્રયોગશાળાની તપાસ નથી.",
+        "kn" to "ಇದು ಒಂದು ಫೋಟೋದಿಂದ ಫೋನ್ ಮಾದರಿಯ ಅಂದಾಜು, ಪ್ರಯೋಗಾಲಯ ಪರೀಕ್ಷೆ ಅಲ್ಲ.",
+        "ks" to "یہ اکھ فوٹو پؠٹھ فون ماڈلُک اندازہ چھُ، لیبارٹری ہُند ٹیسٹ چھُ نَہ۔",
+        "kok" to "ही एका फोटोवेल्यान फोन मॉडलाची अदमास आसा, प्रयोगशाळेची तपासणी न्हय.",
+        "mai" to "ई एकटा फोटो सँ फोन मॉडल केर अनुमान अछि, प्रयोगशाला केर जाँच नहि।",
+        "ml" to "ഇത് ഒരു ഫോട്ടോയിൽ നിന്നുള്ള ഫോൺ മോഡലിന്റെ ഊഹമാണ്, ലാബ് പരിശോധനയല്ല.",
+        "mni" to "মসিগী ফোটো অমত্তগী ফোন মোদেলগী য়াইফদবা অমনি, ল্যাবগী পরীক্ষা নত্তে।",
+        "mr" to "हा एका फोटोवरून फोन मॉडेलचा अंदाज आहे, प्रयोगशाळेची तपासणी नाही.",
+        "ne" to "यो एउटा फोटोबाट फोन मोडेलको अनुमान हो, प्रयोगशालाको जाँच होइन।",
+        "or" to "ଏହା ଗୋଟିଏ ଫଟୋରୁ ଫୋନ ମଡେଲର ଅନୁମାନ, ଲ୍ୟାବ୍ ପରୀକ୍ଷା ନୁହେଁ।",
+        "pa" to "ਇਹ ਇੱਕ ਫੋਟੋ ਤੋਂ ਫੋਨ ਮਾਡਲ ਦਾ ਅੰਦਾਜ਼ਾ ਹੈ, ਲੈਬ ਦੀ ਜਾਂਚ ਨਹੀਂ।",
+        "sa" to "एतत् एकस्मात् चित्राद् दूरभाषप्रतिमानस्य अनुमानम्, प्रयोगशालापरीक्षा न।",
+        "sat" to "ᱱᱚᱣᱟ ᱫᱚ ᱢᱤᱫ ᱪᱤᱛᱟᱹᱨ ᱠᱷᱚᱱ ᱯᱷᱚᱱ ᱢᱚᱰᱮᱞ ᱨᱮᱭᱟᱜ ᱟᱸᱫᱟᱡᱽ, ᱞᱮᱵᱽ ᱯᱚᱨᱤᱠᱷᱟ ᱵᱟᱝ।",
+        "sd" to "هي هڪ فوٽو تان فون ماڊل جو اندازو آهي، ليبارٽري جي جاچ ناهي.",
+        "ta" to "இது ஒரு படத்திலிருந்து தொலைபேசி மாதிரியின் யூகம், ஆய்வகப் பரிசோதனை அல்ல.",
+        "te" to "ఇది ఒక ఫోటో నుంచి ఫోన్ నమూనా అంచనా, ప్రయోగశాల పరీక్ష కాదు.",
+        "ur" to "یہ ایک تصویر سے فون ماڈل کا اندازہ ہے، تجربہ گاہ کا ٹیسٹ نہیں۔",
+    )
 
     fun parse(raw: String, labels: List<LabelInfo>): VisionReply? {
         val parsed = jsonObject(raw) ?: return null

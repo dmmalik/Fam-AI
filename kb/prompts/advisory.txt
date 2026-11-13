@@ -1,7 +1,8 @@
-You write short crop advice for a farmer. The selected language code is {language}.
-en means English, hi means Hindi, and sw means Swahili. Write every string in that language.
+You write short crop advice for a farmer. The selected language code is {language} ({language_name}).
+Write every string in {language_name}.
 
 Use the diagnosis and the notes below. Do not add a product, a dose, or a claim that the notes do not support.
+If the notes are not already in {language_name}, translate only what they say.
 
 Region:
 {region}

@@ -89,6 +89,7 @@ class DiagnoseRepository(context: Context) {
                         kind = remote.kind,
                         confidence = remote.confidence,
                         adviceJson = remote.advice.toJson(),
+                        note = englishNote("", current.language, remote.adviceLanguage),
                     ),
                 )
                 return DiagnoseOutcome.Ready(id)
@@ -109,15 +110,22 @@ class DiagnoseRepository(context: Context) {
         note: String,
     ): DiagnoseOutcome {
         if (vision.locate() == null) return DiagnoseOutcome.ModelMissing
+        val pack = LanguagePackStore(app).read(current.language, kb)
         val seen = try {
-            vision.ask(prepared.jpeg, kb.labels, current.language, crop)
+            vision.ask(
+                prepared.jpeg,
+                kb.labels,
+                current.language,
+                crop,
+                kb.promptNotes(current.language, pack),
+            )
         } catch (exc: Exception) {
             if (exc is CancellationException) throw exc
             android.util.Log.e("FamAI", "phone vision failed", exc)
             null
         }
         if (seen == null) return DiagnoseOutcome.ModelFailed
-        return visionRow(prepared, current, seen, started, note)
+        return visionRow(prepared, current, seen, started, note, pack)
     }
 
     private suspend fun visionRow(
@@ -126,10 +134,14 @@ class DiagnoseRepository(context: Context) {
         seen: PhoneVisionResult,
         started: Long,
         note: String,
+        pack: LanguagePack?,
     ): DiagnoseOutcome {
         val reply = seen.reply
         val known = reply.known(kb.labels)
-        val advice = reply.replyText(current.language)
+        val template = known?.let { kb.advice(it.id, kb.region(current.regionId), current.language, pack) }
+        val filled = template?.takeIf { reply.summary.isBlank() && it.summary.isNotBlank() }
+        val advice = filled ?: reply.replyText(current.language)
+        val stored = if (filled != null) kb.storedLanguage(current.language, pack) else current.language
         val kind = known?.kind ?: "disease"
         val id = audit.insert(
             auditEvent(
@@ -157,10 +169,17 @@ class DiagnoseRepository(context: Context) {
                 confidence = reply.confidence,
                 lesionRatio = prepared.sample.lesionRatio,
                 adviceJson = advice.toJson(),
-                note = visionNote(note),
+                note = englishNote(visionNote(note), current.language, stored),
             ),
         )
         return DiagnoseOutcome.Ready(id)
+    }
+
+    private fun englishNote(note: String, language: String, storedIn: String): String {
+        if (language == "en" || storedIn != "en") return note
+        if (note.isEmpty()) return "english_note"
+        if (note == "english_note" || note.endsWith("+english")) return note
+        return "$note+english"
     }
 
     private fun visionNote(note: String): String {

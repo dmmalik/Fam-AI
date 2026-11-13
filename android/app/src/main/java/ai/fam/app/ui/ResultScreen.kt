@@ -115,11 +115,14 @@ fun ResultScreen(id: Long?, onBack: () -> Unit, onAdvice: (Long) -> Unit) {
                     AdviceBlock(stringResource(R.string.advice_help), listOf(advice.whenToSeekHelp))
                 }
             }
-            when (record.note) {
+            when (baseNote(record.note)) {
                 "health" -> Text(stringResource(R.string.note_health))
                 "pi_error" -> Text(stringResource(R.string.note_pi_error))
                 "health_vision" -> Text(stringResource(R.string.note_health_vision))
                 "pi_error_vision" -> Text(stringResource(R.string.note_pi_error_vision))
+            }
+            if (showsEnglishNote(record.note)) {
+                Text(stringResource(R.string.note_english))
             }
             Text(
                 "${record.backend} · ${record.latencyMs} ms",
@@ -163,4 +166,16 @@ fun rememberRecord(id: Long?): LoadedRecord {
         state = LoadedRecord(true, event)
     }
     return state
+}
+
+fun showsEnglishNote(note: String): Boolean {
+    return note == "english_note" || note.endsWith("+english")
+}
+
+fun baseNote(note: String): String {
+    return when {
+        note == "english_note" -> ""
+        note.endsWith("+english") -> note.removeSuffix("+english")
+        else -> note
+    }
 }

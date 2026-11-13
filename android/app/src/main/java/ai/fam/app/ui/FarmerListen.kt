@@ -27,6 +27,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import ai.fam.app.R
+import ai.fam.app.data.LanguageCatalog
 import java.util.Locale
 
 @Composable
@@ -77,6 +78,7 @@ private fun openVoiceInstall(context: Context) {
 }
 
 class FarmerSpeaker(context: Context, private val language: String) {
+    private val app = context.applicationContext
     var ready by mutableStateOf(false)
         private set
     var speaking by mutableStateOf(false)
@@ -126,11 +128,7 @@ class FarmerSpeaker(context: Context, private val language: String) {
     }
 
     private fun applyLanguage(tts: TextToSpeech): Boolean {
-        val options = when (language) {
-            "hi" -> listOf(Locale("hi", "IN"), Locale("hi"))
-            "sw" -> listOf(Locale("sw", "TZ"), Locale("sw", "KE"), Locale("sw"))
-            else -> listOf(Locale.ENGLISH, Locale.US)
-        }
+        val options = LanguageCatalog.ttsTags(app, language).map { Locale.forLanguageTag(it) }
         for (locale in options) {
             val code = tts.setLanguage(locale)
             if (code != TextToSpeech.LANG_MISSING_DATA && code != TextToSpeech.LANG_NOT_SUPPORTED) return true

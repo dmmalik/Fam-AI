@@ -138,6 +138,9 @@ class VisionReplyTest {
         assertTrue(prompt.contains("when_to_seek_help"))
         assertTrue(prompt.contains("bamboo"))
         assertTrue(prompt.contains("Do not write the word unknown"))
+        val tamil = VisionReplyParser.prompt(labels(), language = "ta", crop = null)
+        assertTrue(tamil.contains("Tamil"))
+        assertTrue(tamil.contains("in Tamil"))
     }
 
     @Test

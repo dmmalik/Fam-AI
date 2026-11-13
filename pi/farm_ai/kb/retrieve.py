@@ -7,8 +7,10 @@ import string
 from pathlib import Path
 from typing import Any
 
+from farm_ai.config import BUILTIN_LANGUAGES, LANGUAGE_NAMES, LANGUAGES
 
-_LANGS = ("en", "hi", "sw")
+
+_LANGS = BUILTIN_LANGUAGES
 _LIST_KEYS = ("immediate_actions", "treatment", "prevention")
 _TEXT_KEYS = ("summary", "when_to_seek_help", "caution")
 _REGION_IDS = ("indo_gangetic", "peninsular_india", "east_african_highlands")
@@ -23,6 +25,11 @@ class KnowledgeBase:
         self.labels = _load_labels(self.root / "labels.json")
         self._treatments = _load_treatments(self.root / "treatments.json", self.labels)
         self._regions = _load_regions(self.root / "regions.json")
+        self._packs, self._pack_paths = _load_packs(
+            self.root / "packs",
+            self.labels,
+            self._treatments,
+        )
         self.prompt = (self.root / "prompts" / "advisory.txt").read_text(encoding="utf-8")
         try:
             fields = {
@@ -32,7 +39,7 @@ class KnowledgeBase:
             }
         except ValueError as exc:
             raise ValueError("prompt has a broken placeholder") from exc
-        expected = {"language", "region", "knowledge", "diagnosis"}
+        expected = {"language", "language_name", "region", "knowledge", "diagnosis"}
         if fields != expected:
             raise ValueError("prompt placeholders must be " + ", ".join(sorted(expected)))
         self._by_id = {item["id"]: item for item in self.labels}
@@ -45,6 +52,36 @@ class KnowledgeBase:
 
     def region(self, region_id: str) -> dict[str, Any] | None:
         return self._regions.get(region_id)
+
+    def language_name(self, code: str) -> str:
+        return LANGUAGE_NAMES.get(code, code)
+
+    def pack_path(self, code: str) -> Path | None:
+        return self._pack_paths.get(code)
+
+    def localized(
+        self,
+        label_id: str,
+        region: dict[str, Any],
+        language: str,
+    ) -> tuple[dict[str, Any], dict[str, Any], str]:
+        """Return notes in `language` when a pack or a built-in text exists.
+
+        The third value is the language those stored notes are actually in.
+        """
+
+        treatment = self.treatment(label_id)
+        if language in _LANGS:
+            return treatment, region, language
+        pack = self._packs.get(language)
+        if pack is None:
+            return treatment, region, "en"
+        region_id = str(region.get("id", ""))
+        return (
+            _overlay(treatment, pack["treatments"][label_id], language),
+            _overlay(region, pack["regions"][region_id], language),
+            language,
+        )
 
     @property
     def region_ids(self) -> frozenset[str]:
@@ -140,6 +177,104 @@ def _load_regions(path: Path) -> dict[str, Any]:
             entry[key] = _language_text(block.get(key), f"{region_id} {key}")
         cleaned[region_id] = entry
     return cleaned
+
+
+def _overlay(block: dict[str, Any], translated: dict[str, Any], language: str) -> dict[str, Any]:
+    out: dict[str, Any] = {}
+    for key, value in block.items():
+        if key in translated and isinstance(value, dict):
+            copied = dict(value)
+            copied[language] = translated[key]
+            out[key] = copied
+        else:
+            out[key] = value
+    return out
+
+
+def _load_packs(
+    folder: Path,
+    labels: list[dict[str, Any]],
+    treatments: dict[str, Any],
+) -> tuple[dict[str, dict[str, Any]], dict[str, Path]]:
+    packs: dict[str, dict[str, Any]] = {}
+    paths: dict[str, Path] = {}
+    if not folder.is_dir():
+        return packs, paths
+    label_ids = [item["id"] for item in labels]
+    allowed = set(LANGUAGES) - set(_LANGS)
+    for path in sorted(folder.glob("*.json")):
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        code = _clean_pack_code(payload, path)
+        if code not in allowed:
+            raise ValueError(f"pack {path.name} is not a downloadable language")
+        packs[code] = _clean_pack(payload, code, label_ids, treatments)
+        paths[code] = path
+    return packs, paths
+
+
+def _clean_pack_code(payload: Any, path: Path) -> str:
+    if not isinstance(payload, dict):
+        raise ValueError(f"{path.name} must be an object")
+    code = payload.get("code")
+    if not isinstance(code, str) or path.stem != code:
+        raise ValueError(f"{path.name} code does not match the file name")
+    version = payload.get("version")
+    if version != 1:
+        raise ValueError(f"{code} pack version must be 1")
+    return code
+
+
+def _clean_pack(
+    payload: dict[str, Any],
+    code: str,
+    label_ids: list[str],
+    treatments: dict[str, Any],
+) -> dict[str, Any]:
+    raw_treatments = payload.get("treatments")
+    raw_regions = payload.get("regions")
+    if not isinstance(raw_treatments, dict) or not isinstance(raw_regions, dict):
+        raise ValueError(f"{code} pack is missing treatments or regions")
+    cleaned_treatments: dict[str, Any] = {}
+    for label_id in label_ids:
+        block = raw_treatments.get(label_id)
+        if not isinstance(block, dict):
+            raise ValueError(f"{code} pack missing {label_id}")
+        entry: dict[str, Any] = {}
+        for key in _TEXT_KEYS:
+            value = block.get(key)
+            if not isinstance(value, str) or not value.strip():
+                raise ValueError(f"{code} {label_id} {key} is empty")
+            entry[key] = value.strip()
+        for key in _LIST_KEYS:
+            value = block.get(key)
+            english = treatments[label_id][key]["en"]
+            if not isinstance(value, list) or len(value) != len(english):
+                raise ValueError(f"{code} {label_id} {key} does not match English")
+            items = [str(item).strip() for item in value]
+            if any(not item for item in items):
+                raise ValueError(f"{code} {label_id} {key} has an empty item")
+            entry[key] = items
+        cleaned_treatments[label_id] = entry
+    extra = [key for key in raw_treatments if key not in set(label_ids)]
+    if extra:
+        raise ValueError(f"{code} pack has unknown labels")
+    cleaned_regions: dict[str, Any] = {}
+    for region_id in _REGION_IDS:
+        block = raw_regions.get(region_id)
+        if not isinstance(block, dict):
+            raise ValueError(f"{code} pack missing {region_id}")
+        entry = {}
+        for key in _REGION_KEYS:
+            value = block.get(key)
+            if not isinstance(value, str) or not value.strip():
+                raise ValueError(f"{code} {region_id} {key} is empty")
+            entry[key] = value.strip()
+        cleaned_regions[region_id] = entry
+    summaries = [cleaned_treatments[label_id]["summary"] for label_id in label_ids]
+    english = [treatments[label_id]["summary"]["en"] for label_id in label_ids]
+    if summaries == english:
+        raise ValueError(f"{code} pack still matches the English notes")
+    return {"treatments": cleaned_treatments, "regions": cleaned_regions}
 
 
 def _language_text(block: Any, name: str) -> dict[str, str]:

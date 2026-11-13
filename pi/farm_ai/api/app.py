@@ -11,7 +11,7 @@ from typing import Any
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse, StreamingResponse
+from fastapi.responses import JSONResponse, Response, StreamingResponse
 from starlette.datastructures import UploadFile
 
 from farm_ai.api.audit import AuditLog
@@ -103,6 +103,22 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 "vision_backend": request.app.state.vision.name,
                 "llm_backend": request.app.state.llm.name,
             },
+            headers={"Cache-Control": "no-store"},
+        )
+
+    @app.get("/v1/language-pack/{code}")
+    async def language_pack(code: str, request: Request):
+        provided = bearer_token(request.headers.get("authorization"))
+        if not token_matches(provided, request.app.state.token):
+            request.app.state.audit.write(action="auth_failed")
+            return _error("unauthorized", 401)
+        path = request.app.state.kb.pack_path(code)
+        if path is None:
+            return _error("rejected", 404)
+        payload = path.read_bytes()
+        return Response(
+            content=payload,
+            media_type="application/json",
             headers={"Cache-Control": "no-store"},
         )
 
@@ -244,8 +260,18 @@ async def _diagnose(request: Request):
         prepared = await asyncio.to_thread(PreparedImage.from_bytes, data)
         prediction = await asyncio.to_thread(state.vision.predict, prepared, crop or None)
         label = kb.label(prediction.label_id)
-        treatment = kb.treatment(prediction.label_id)
         region = kb.region(region_id)
+        if region is None:
+            return reject(
+                400,
+                "rejected",
+                "rejected",
+                device_id=device_id,
+                language=language,
+                region=region_id,
+                image_sha256=digest,
+            )
+        treatment, region, stored_language = kb.localized(prediction.label_id, region, language)
         diagnosis = {
             "label_id": prediction.label_id,
             "display_name": label["display_name"],
@@ -258,8 +284,9 @@ async def _diagnose(request: Request):
         if state.vision.name == "hailo":
             advice = fallback_advice(treatment, region, language)
             source = "template"
+            advice_language = stored_language
         else:
-            advice, source = await asyncio.to_thread(
+            advice, source, advice_language = await asyncio.to_thread(
                 advise,
                 state.llm,
                 kb,
@@ -297,6 +324,7 @@ async def _diagnose(request: Request):
         "latency_ms": latency_ms,
         "image_sha256": digest,
         "advice_source": source,
+        "advice_language": advice_language,
         "advice": {
             "summary": advice["summary"],
             "immediate_actions": list(advice["immediate_actions"]),

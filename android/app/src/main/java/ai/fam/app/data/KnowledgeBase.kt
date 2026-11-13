@@ -15,25 +15,51 @@ class KnowledgeBase(
         return regions[id] ?: regions.getValue("indo_gangetic")
     }
 
-    fun advice(labelId: String, region: RegionNote, language: String): AdviceText {
-        val block = treatments.getValue(labelId)
-        val prevention = pickList(block.prevention, language).toMutableList()
-        val irrigation = pickText(region.irrigation, language)
+    fun advice(labelId: String, region: RegionNote, language: String, pack: LanguagePack? = null): AdviceText {
+        val block = treatments[labelId]
+        val packed = pack?.treatments?.get(labelId)
+        if (block == null && packed == null) {
+            return AdviceText("", emptyList(), emptyList(), emptyList(), "")
+        }
+        val prevention = (packed?.prevention ?: pickList(block!!.prevention, language)).toMutableList()
+        val irrigation = packedRegion(region.id, pack)?.irrigation ?: pickText(region.irrigation, language)
         if (irrigation !in prevention) {
             prevention.add(irrigation)
         }
         return AdviceText(
-            summary = pickText(block.summary, language),
-            immediateActions = pickList(block.immediateActions, language),
-            treatment = pickList(block.treatment, language),
+            summary = packed?.summary ?: pickText(block!!.summary, language),
+            immediateActions = packed?.immediateActions ?: pickList(block!!.immediateActions, language),
+            treatment = packed?.treatment ?: pickList(block!!.treatment, language),
             prevention = prevention,
-            whenToSeekHelp = pickText(block.whenToSeekHelp, language),
+            whenToSeekHelp = packed?.whenToSeekHelp ?: pickText(block!!.whenToSeekHelp, language),
         )
     }
 
-    fun regionName(id: String, language: String): String {
+    fun storedLanguage(language: String, pack: LanguagePack?): String {
+        return if (language in STORED_LANGUAGES || pack?.code == language) language else "en"
+    }
+
+    fun promptNotes(language: String, pack: LanguagePack?): String {
+        val lines = ArrayList<String>(labels.size)
+        for (label in labels) {
+            val summary = pack?.treatments?.get(label.id)?.summary
+                ?: treatments[label.id]?.let { pickText(it.summary, language) }
+                ?: continue
+            lines.add("${label.id}: $summary")
+        }
+        return lines.joinToString("\n")
+    }
+
+    fun regionName(id: String, language: String, pack: LanguagePack? = null): String {
+        val packed = packedRegion(id, pack)?.names
+        if (!packed.isNullOrBlank()) return packed
         val note = regions[id] ?: return id
         return pickText(note.names, language)
+    }
+
+    private fun packedRegion(id: String, pack: LanguagePack?): PackRegion? {
+        if (pack == null) return null
+        return pack.regions[id]
     }
 
     companion object {
@@ -108,7 +134,7 @@ class KnowledgeBase(
 
         private fun texts(obj: JSONObject): Map<String, String> {
             val out = LinkedHashMap<String, String>()
-            for (language in LANGUAGES) {
+            for (language in STORED_LANGUAGES) {
                 val value = obj.getString(language).trim()
                 require(value.isNotEmpty()) { "missing $language" }
                 out[language] = value
@@ -118,7 +144,7 @@ class KnowledgeBase(
 
         private fun lists(obj: JSONObject): Map<String, List<String>> {
             val out = LinkedHashMap<String, List<String>>()
-            for (language in LANGUAGES) {
+            for (language in STORED_LANGUAGES) {
                 val array = obj.getJSONArray(language)
                 require(array.length() > 0) { "empty $language" }
                 val items = ArrayList<String>(array.length())
@@ -155,7 +181,6 @@ data class RegionNote(
     val inputAccess: Map<String, String>,
 )
 
-val LANGUAGES = listOf("en", "hi", "sw")
 val REGION_IDS = listOf("indo_gangetic", "peninsular_india", "east_african_highlands")
 val CROP_ORDER = listOf("tomato", "potato", "cassava", "maize", "apple")
 

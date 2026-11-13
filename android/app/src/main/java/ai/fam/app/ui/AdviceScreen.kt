@@ -78,6 +78,9 @@ fun AdviceScreen(id: Long?, onBack: () -> Unit) {
             if (advice.whenToSeekHelp.isNotBlank()) {
                 AdviceBlock(stringResource(R.string.advice_help), listOf(advice.whenToSeekHelp))
             }
+            if (showsEnglishNote(record.note)) {
+                Text(stringResource(R.string.note_english))
+            }
         }
     }
 }

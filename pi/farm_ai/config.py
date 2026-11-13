@@ -5,10 +5,14 @@ FAM_AI_CLASSIFIER_HEF, or FAM_AI_LLAMA_PTE point somewhere else. The bearer
 token is read from FAM_AI_TOKEN_FILE, which must sit outside the repo and be
 mode 0600. FAM_AI_HOST is the hotspot address to bind. FAM_AI_DB is the audit
 database. FAM_AI_KB points at the notes directory.
+
+Language codes come from kb/languages.json. English, Hindi, and Swahili are
+built in. Every other code is a downloadable crop-note pack.
 """
 
 from __future__ import annotations
 
+import json
 import os
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -16,7 +20,7 @@ from pathlib import Path
 
 MODEL_ID = "efficientnetv2_s_int8_384"
 LLAMA_MAX_NEW_TOKENS = 256
-LANGUAGES = ("en", "hi", "sw")
+BUILTIN_LANGUAGES = ("en", "hi", "sw")
 
 _PACKAGE_ROOT = Path(__file__).resolve().parents[1]
 _REPO_ROOT = _PACKAGE_ROOT.parent
@@ -33,6 +37,55 @@ def default_kb_dir() -> Path:
         if (candidate / "labels.json").is_file():
             return candidate
     return _REPO_ROOT / "kb"
+
+
+def load_languages(kb_dir: Path | None = None) -> tuple[dict[str, object], ...]:
+    path = (kb_dir or default_kb_dir()) / "languages.json"
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, list) or not payload:
+        raise RuntimeError("languages.json must be a non-empty list")
+    rows: list[dict[str, object]] = []
+    seen: set[str] = set()
+    for item in payload:
+        if not isinstance(item, dict):
+            raise RuntimeError("each language must be an object")
+        code = str(item.get("code", "")).strip()
+        name = str(item.get("name_en", "")).strip()
+        autonym = str(item.get("autonym", "")).strip()
+        tts = item.get("tts")
+        builtin = item.get("builtin")
+        if (
+            not code.isalpha()
+            or not code.islower()
+            or not 2 <= len(code) <= 8
+            or code in seen
+            or not name
+            or not autonym
+            or not isinstance(tts, list)
+            or not tts
+            or not all(isinstance(tag, str) and tag.strip() for tag in tts)
+            or not isinstance(builtin, bool)
+        ):
+            raise RuntimeError(f"bad language entry: {code or item}")
+        seen.add(code)
+        rows.append(
+            {
+                "code": code,
+                "name_en": name,
+                "autonym": autonym,
+                "tts": [tag.strip() for tag in tts],
+                "builtin": builtin,
+            }
+        )
+    builtin = tuple(row["code"] for row in rows if row["builtin"])
+    if builtin != BUILTIN_LANGUAGES:
+        raise RuntimeError("built-in languages must be English, Hindi, and Swahili")
+    return tuple(rows)
+
+
+_LANGUAGES = load_languages()
+LANGUAGES = tuple(str(row["code"]) for row in _LANGUAGES)
+LANGUAGE_NAMES = {str(row["code"]): str(row["name_en"]) for row in _LANGUAGES}
 
 
 def _env_path(name: str, default: Path) -> Path:

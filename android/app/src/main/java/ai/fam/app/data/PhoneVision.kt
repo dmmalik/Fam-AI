@@ -36,7 +36,13 @@ class PhoneVision(context: Context) {
 
     fun locate(): File? = locateModel(app)
 
-    fun ask(jpeg: File, labels: List<LabelInfo>, language: String, crop: String?): PhoneVisionResult? {
+    fun ask(
+        jpeg: File,
+        labels: List<LabelInfo>,
+        language: String,
+        crop: String?,
+        notes: String = "",
+    ): PhoneVisionResult? {
         val file = locate() ?: return null
         val key = "${file.absolutePath}:${file.length()}:${file.lastModified()}"
         return try {
@@ -51,7 +57,7 @@ class PhoneVision(context: Context) {
                     failedKey = key
                     return null
                 }
-                val reply = generate(ready, jpeg, labels, language, crop)
+                val reply = generate(ready, jpeg, labels, language, crop, notes)
                 PhoneVisionResult(reply, modelId, modelVersion)
             }
         } catch (exc: Throwable) {
@@ -117,9 +123,10 @@ class PhoneVision(context: Context) {
         labels: List<LabelInfo>,
         language: String,
         crop: String?,
+        notes: String,
     ): VisionReply {
         val png = pngBytes(jpeg)
-        val prompt = VisionReplyParser.prompt(labels, language, crop)
+        val prompt = VisionReplyParser.prompt(labels, language, crop, notes)
         val config = ConversationConfig(
             systemInstruction = Contents.of(
                 "You look at one crop photo, name the plant and the disease or pest, and write a short reply the grower can use. Answer with JSON only.",

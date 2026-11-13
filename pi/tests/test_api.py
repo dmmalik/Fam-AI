@@ -88,6 +88,7 @@ def test_mock_diagnose_writes_one_audit_row(settings):
         "latency_ms",
         "image_sha256",
         "advice_source",
+        "advice_language",
         "advice",
     }
     assert set(body["advice"]) == {
@@ -101,6 +102,7 @@ def test_mock_diagnose_writes_one_audit_row(settings):
     assert body["model_id"] == "mock"
     assert body["model_version"] == "none"
     assert body["advice_source"] == "template"
+    assert body["advice_language"] == "en"
     assert body["image_sha256"] == digest
     assert body["severity"] in {"low", "medium", "high"}
     assert isinstance(body["latency_ms"], int) and body["latency_ms"] >= 0
@@ -254,6 +256,34 @@ def test_hailo_request_does_not_call_llama(settings):
     assert body["backend"] == "hailo"
     assert body["advice_source"] == "template"
     assert body["advice"]["summary"] == app.state.kb.treatment(label["id"])["summary"]["hi"]
+
+
+def test_unknown_language_is_rejected_and_tamil_uses_the_pack(settings):
+    with _client(create_app(settings)) as client:
+        rejected = _diagnose(client, png_bytes(), language="zz")
+        accepted = _diagnose(client, png_bytes(), language="ta")
+        missing = client.get("/v1/language-pack/en", headers={"Authorization": f"Bearer {TOKEN}"})
+        hidden = client.get("/v1/language-pack/ta")
+        packed = client.get(
+            "/v1/language-pack/ta",
+            headers={"Authorization": f"Bearer {TOKEN}"},
+        )
+    assert rejected.status_code == 400
+    assert accepted.status_code == 200
+    body = accepted.json()
+    assert body["advice_source"] == "template"
+    assert "summary" in body["advice"]
+    assert missing.status_code == 404
+    assert hidden.status_code == 401
+    if packed.status_code == 200:
+        pack = packed.json()
+        assert pack["code"] == "ta"
+        assert pack["version"] == 1
+        assert body["advice_language"] == "ta"
+        assert body["advice"]["summary"] == pack["treatments"][body["label_id"]]["summary"]
+    else:
+        assert packed.status_code == 404
+        assert body["advice_language"] == "en"
 
 
 def test_token_file_must_be_mode_0600(tmp_path):

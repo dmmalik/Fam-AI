@@ -14,7 +14,8 @@ data class AppSettings(
 )
 
 class SettingsStore(context: Context) {
-    private val prefs = context.applicationContext.getSharedPreferences(FILE, Context.MODE_PRIVATE)
+    private val app = context.applicationContext
+    private val prefs = app.getSharedPreferences(FILE, Context.MODE_PRIVATE)
 
     fun read(): AppSettings {
         return AppSettings(
@@ -35,7 +36,7 @@ class SettingsStore(context: Context) {
     }
 
     private fun normalizeLanguage(value: String?): String {
-        return if (value in LANGUAGES) value!! else "en"
+        return if (value != null && value in LanguageCatalog.codes(app)) value else "en"
     }
 
     private fun normalizeRegion(value: String?): String {

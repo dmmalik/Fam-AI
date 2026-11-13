@@ -107,4 +107,21 @@
     <string name="record_missing">यह पंक्ति लॉग में नहीं है।</string>
     <string name="cd_thumb">पत्ती की छोटी तस्वीर</string>
     <string name="cd_back">वापस</string>
+    <string name="note_english">सहेजा नोट अंग्रेज़ी में है।</string>
+    <string name="pack_title">भाषा पैक</string>
+    <string name="pack_body">यह पैक %1$s की फसल नोट है। अंग्रेज़ी, हिन्दी और स्वाहिली इस फ़ोन पर पहले से हैं।</string>
+    <string name="pack_download">भाषा पैक डाउनलोड करें</string>
+    <string name="pack_downloading">भाषा पैक डाउनलोड हो रहा है… %1$d%%</string>
+    <string name="pack_downloading_unknown">भाषा पैक डाउनलोड हो रहा है…</string>
+    <string name="pack_size">आकार: %1$s</string>
+    <string name="pack_installed">भाषा पैक सहेज लिया गया</string>
+    <string name="pack_remove">भाषा पैक हटाएँ</string>
+    <string name="pack_remove_confirm">यह भाषा पैक हटाएँ? सलाह फिर अंग्रेज़ी नोट पर चली जाएगी।</string>
+    <string name="pack_remove_go">हटाएँ</string>
+    <string name="pack_needs_pi">यह पैक फील्ड बॉक्स से आता है। पाई का पता और टोकन सहेजें, फिर फिर कोशिश करें।</string>
+    <string name="pack_failed">भाषा पैक का डाउनलोड रुक गया।</string>
+    <string name="pack_retry">फिर कोशिश करें</string>
+    <string name="pack_waiting">कनेक्शन का इंतज़ार है।</string>
+    <string name="pack_paused_wifi">वाई-फ़ाई का इंतज़ार है। मोबाइल डेटा बंद है।</string>
+    <string name="pack_not_now">अभी नहीं</string>
 </resources>

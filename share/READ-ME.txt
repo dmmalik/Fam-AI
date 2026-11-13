@@ -1,0 +1,16 @@
+Fam-AI phone app
+
+This folder has one file for the phone: Fam-AI.apk
+
+How to install
+1. Copy Fam-AI.apk onto an Android phone.
+2. Open the file.
+3. Allow install from this source if the phone asks.
+4. Tap Install, then open Fam-AI.
+
+The phone should be Android 8 or newer.
+
+What the app does
+Take a photo of a leaf. The app names a possible disease or pest and writes what to do today. It does not give a medicine dose. Take a spreading problem to the agriculture officer.
+
+Full steps, including language and the field computer, are in START-HERE.md at the top of this project.

@@ -107,4 +107,21 @@
     <string name="record_missing">Rekodi hii haipo kwenye kumbukumbu.</string>
     <string name="cd_thumb">Picha ndogo ya jani</string>
     <string name="cd_back">Rudi</string>
+    <string name="note_english">Maelezo yaliyohifadhiwa yamo kwa Kiingereza.</string>
+    <string name="pack_title">Kifurushi cha lugha</string>
+    <string name="pack_body">Kifurushi hiki ni maelezo ya mazao kwa %1$s. Kiingereza, Kihindi, na Kiswahili vipo tayari kwenye simu hii.</string>
+    <string name="pack_download">Pakua kifurushi cha lugha</string>
+    <string name="pack_downloading">Kifurushi cha lugha kinapakuliwa… %1$d%%</string>
+    <string name="pack_downloading_unknown">Kifurushi cha lugha kinapakuliwa…</string>
+    <string name="pack_size">Ukubwa: %1$s</string>
+    <string name="pack_installed">Kifurushi cha lugha kimehifadhiwa</string>
+    <string name="pack_remove">Ondoa kifurushi cha lugha</string>
+    <string name="pack_remove_confirm">Ondoa kifurushi hiki? Ushauri utarudi kwenye maelezo ya Kiingereza.</string>
+    <string name="pack_remove_go">Ondoa</string>
+    <string name="pack_needs_pi">Kifurushi hiki kinatoka kwenye kisanduku cha shamba. Hifadhi anwani ya Pi na tokeni, kisha jaribu tena.</string>
+    <string name="pack_failed">Upakuaji wa kifurushi cha lugha umesimama.</string>
+    <string name="pack_retry">Jaribu tena</string>
+    <string name="pack_waiting">Inasubiri muunganisho.</string>
+    <string name="pack_paused_wifi">Inasubiri Wi-Fi. Data ya simu imezimwa.</string>
+    <string name="pack_not_now">Sio sasa</string>
 </resources>

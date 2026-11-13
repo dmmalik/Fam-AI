@@ -63,7 +63,7 @@ def test_bad_llama_json_uses_template():
             return "I cannot answer as JSON"
 
     bad = Bad()
-    advice, source = advise(
+    advice, source, stored = advise(
         bad,
         kb,
         language="sw",
@@ -72,7 +72,9 @@ def test_bad_llama_json_uses_template():
         diagnosis={"label_id": "tomato_late_blight", "severity": "high"},
     )
     assert "tomato_late_blight" in bad.prompt
+    assert "Swahili" in bad.prompt
     assert source == "template"
+    assert stored == "sw"
     assert advice["summary"] == kb.treatment("tomato_late_blight")["summary"]["sw"]
     assert advice["summary"] != kb.treatment("tomato_late_blight")["summary"]["en"]
 
@@ -85,7 +87,7 @@ def test_valid_llama_json_wins():
         def generate(self, prompt: str) -> str:
             return json.dumps(payload)
 
-    advice, source = advise(
+    advice, source, stored = advise(
         Good(),
         kb,
         language="hi",
@@ -94,6 +96,7 @@ def test_valid_llama_json_wins():
         diagnosis={"label_id": "maize_healthy"},
     )
     assert source == "llama"
+    assert stored == "hi"
     assert advice == {
         "summary": payload["summary"],
         "immediate_actions": payload["immediate_actions"],
@@ -101,6 +104,36 @@ def test_valid_llama_json_wins():
         "prevention": payload["prevention"],
         "when_to_seek_help": payload["when_to_seek_help"],
     }
+
+
+def test_tamil_template_uses_the_pack_not_english():
+    kb = KnowledgeBase(KB)
+
+    class Bad:
+        def __init__(self) -> None:
+            self.prompt = ""
+
+        def generate(self, prompt: str) -> str:
+            self.prompt = prompt
+            return "not json"
+
+    bad = Bad()
+    advice, source, stored = advise(
+        bad,
+        kb,
+        language="ta",
+        region=kb.region("indo_gangetic"),
+        treatment=kb.treatment("tomato_late_blight"),
+        diagnosis={"label_id": "tomato_late_blight", "severity": "high"},
+    )
+    assert source == "template"
+    assert "Tamil" in bad.prompt
+    if kb.pack_path("ta") is None:
+        assert stored == "en"
+        assert advice["summary"] == kb.treatment("tomato_late_blight")["summary"]["en"]
+    else:
+        assert stored == "ta"
+        assert advice["summary"] != kb.treatment("tomato_late_blight")["summary"]["en"]
 
 
 def test_notes_cover_every_label_in_three_languages():

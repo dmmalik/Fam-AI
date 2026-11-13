@@ -13,13 +13,20 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -36,9 +43,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import ai.fam.app.R
 import ai.fam.app.data.AuditDatabase
 import ai.fam.app.data.DeviceIdStore
+import ai.fam.app.data.AppLanguage
 import ai.fam.app.data.KnowledgeBase
-import ai.fam.app.data.LANGUAGES
+import ai.fam.app.data.LanguageCatalog
+import ai.fam.app.data.LanguagePackDownload
+import ai.fam.app.data.LanguagePackStore
 import ai.fam.app.data.ModelDownload
+import ai.fam.app.data.PackFetch
+import ai.fam.app.data.PhoneModelFiles
 import ai.fam.app.data.PiAddress
 import ai.fam.app.data.REGION_IDS
 import ai.fam.app.data.SettingsStore
@@ -56,6 +68,7 @@ data class SettingsUi(
     val address: String = PiAddress.DEFAULT,
     val token: String = "",
     val language: String = "en",
+    val languages: List<AppLanguage> = emptyList(),
     val regionId: String = "indo_gangetic",
     val regionNames: Map<String, String> = emptyMap(),
     val ready: Boolean = false,
@@ -112,13 +125,17 @@ fun SettingsScreen(padding: PaddingValues) {
                 .semantics { contentDescription = "field-token" },
         )
         Text(stringResource(R.string.settings_language), style = MaterialTheme.typography.titleMedium)
-        LANGUAGES.forEach { code ->
+        state.languages.forEach { language ->
             ChoiceRow(
-                selected = state.language == code,
-                label = languageName(code),
-                description = "language-$code",
-                onClick = { viewModel.setLanguage(code) },
+                selected = state.language == language.code,
+                label = language.autonym,
+                description = "language-${language.code}",
+                onClick = { viewModel.setLanguage(language.code) },
             )
+        }
+        val selected = state.languages.firstOrNull { it.code == state.language }
+        if (selected != null && !selected.builtin) {
+            LanguagePackPanel(selected, viewModel)
         }
         Text(stringResource(R.string.settings_region), style = MaterialTheme.typography.titleMedium)
         REGION_IDS.forEach { id ->
@@ -160,11 +177,75 @@ private fun ChoiceRow(selected: Boolean, label: String, onClick: () -> Unit, des
 }
 
 @Composable
-private fun languageName(code: String): String {
-    return when (code) {
-        "hi" -> stringResource(R.string.lang_hi)
-        "sw" -> stringResource(R.string.lang_sw)
-        else -> stringResource(R.string.lang_en)
+private fun LanguagePackPanel(language: AppLanguage, viewModel: SettingsViewModel) {
+    val packs by LanguagePackDownload.state.collectAsStateWithLifecycle()
+    val fetch = packs[language.code] ?: PackFetch.Missing
+    var confirming by remember { mutableStateOf(false) }
+    Text(stringResource(R.string.pack_title), style = MaterialTheme.typography.titleMedium)
+    Text(stringResource(R.string.pack_body, language.autonym))
+    when (fetch) {
+        is PackFetch.Ready -> {
+            Text(stringResource(R.string.pack_installed))
+            Text(stringResource(R.string.pack_size, PhoneModelFiles.sizeText(fetch.bytes)))
+            OutlinedButton(onClick = { confirming = true }, modifier = Modifier.fillMaxWidth()) {
+                Text(stringResource(R.string.pack_remove))
+            }
+        }
+        is PackFetch.Running -> {
+            if (fetch.total > 0L) {
+                LinearProgressIndicator(
+                    progress = { (fetch.done.toFloat() / fetch.total.toFloat()).coerceIn(0f, 1f) },
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                val percent = ((100 * fetch.done) / fetch.total).toInt().coerceIn(0, 100)
+                Text(stringResource(R.string.pack_downloading, percent))
+            } else {
+                LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+                Text(stringResource(R.string.pack_downloading_unknown))
+            }
+        }
+        PackFetch.NeedsPi -> Text(stringResource(R.string.pack_needs_pi))
+        PackFetch.Waiting -> Text(stringResource(R.string.pack_waiting))
+        is PackFetch.Paused -> Text(stringResource(R.string.pack_paused_wifi))
+        is PackFetch.Failed -> {
+            Text(
+                if (fetch.needsPi) {
+                    stringResource(R.string.pack_needs_pi)
+                } else {
+                    stringResource(R.string.pack_failed)
+                },
+            )
+            Button(onClick = viewModel::downloadPack, modifier = Modifier.fillMaxWidth()) {
+                Text(stringResource(R.string.pack_retry))
+            }
+        }
+        PackFetch.Missing -> {
+            Button(onClick = viewModel::downloadPack, modifier = Modifier.fillMaxWidth()) {
+                Text(stringResource(R.string.pack_download))
+            }
+        }
+    }
+    if (confirming) {
+        AlertDialog(
+            onDismissRequest = { confirming = false },
+            title = { Text(stringResource(R.string.pack_remove)) },
+            text = { Text(stringResource(R.string.pack_remove_confirm)) },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        confirming = false
+                        viewModel.removePack()
+                    },
+                ) {
+                    Text(stringResource(R.string.pack_remove_go))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { confirming = false }) {
+                    Text(stringResource(R.string.pack_not_now))
+                }
+            },
+        )
     }
 }
 
@@ -189,10 +270,12 @@ class SettingsViewModel(app: Application) : AndroidViewModel(app) {
                 val token = tokens.get()
                 val names = try {
                     val kb = KnowledgeBase.load(getApplication<Application>().assets)
-                    REGION_IDS.associateWith { kb.regionName(it, current.language) }
+                    val pack = LanguagePackStore(getApplication()).read(current.language, kb)
+                    REGION_IDS.associateWith { kb.regionName(it, current.language, pack) }
                 } catch (_: Exception) {
                     emptyMap()
                 }
+                LanguagePackDownload.refresh(getApplication())
                 LoadedSettings(current, token, names)
             }
             _state.update {
@@ -201,6 +284,7 @@ class SettingsViewModel(app: Application) : AndroidViewModel(app) {
                     address = loaded.current.address,
                     token = loaded.token,
                     language = loaded.current.language,
+                    languages = LanguageCatalog.all(getApplication()),
                     regionId = loaded.current.regionId,
                     regionNames = loaded.names,
                     ready = true,
@@ -217,6 +301,22 @@ class SettingsViewModel(app: Application) : AndroidViewModel(app) {
     fun setAddress(value: String) = _state.update { it.copy(address = value, saved = false) }
     fun setToken(value: String) = _state.update { it.copy(token = value, saved = false) }
     fun setLanguage(value: String) = _state.update { it.copy(language = value, saved = false) }
+
+    fun downloadPack() {
+        val ui = _state.value
+        val saved = settings.read()
+        val token = tokens.get()
+        val address = PiAddress.parse(saved.address)
+        if (token.isBlank() || address == null) {
+            LanguagePackDownload.start(getApplication(), ui.language, "", "")
+            return
+        }
+        LanguagePackDownload.start(getApplication(), ui.language, address.origin(), token)
+    }
+
+    fun removePack() {
+        LanguagePackDownload.remove(getApplication(), _state.value.language)
+    }
     fun setRegion(value: String) = _state.update { it.copy(regionId = value, saved = false) }
 
     fun save() {
@@ -228,7 +328,7 @@ class SettingsViewModel(app: Application) : AndroidViewModel(app) {
             return
         }
         val mode = if (ui.mode == "pi") "pi" else "local"
-        val language = if (ui.language in LANGUAGES) ui.language else "en"
+        val language = if (ui.languages.any { it.code == ui.language }) ui.language else "en"
         val region = if (ui.regionId in REGION_IDS) ui.regionId else "indo_gangetic"
         val origin = parsed.origin()
         viewModelScope.launch {
@@ -279,7 +379,8 @@ class SettingsViewModel(app: Application) : AndroidViewModel(app) {
             val names = withContext(Dispatchers.IO) {
                 try {
                     val kb = KnowledgeBase.load(getApplication<Application>().assets)
-                    REGION_IDS.associateWith { kb.regionName(it, language) }
+                    val pack = LanguagePackStore(getApplication()).read(language, kb)
+                    REGION_IDS.associateWith { kb.regionName(it, language, pack) }
                 } catch (_: Exception) {
                     _state.value.regionNames
                 }
