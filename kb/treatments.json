@@ -1,0 +1,1772 @@
+{
+  "apple_scab": {
+    "summary": {
+      "en": "Apple scab makes olive blotches on leaves and corky spots on fruit. It spreads in wet spring weather.",
+      "hi": "सेब की पपड़ी पत्तियों पर जैतूनी धब्बे और फल पर खुरदरे दाग बनाती है। यह गीले बसंत में फैलती है।",
+      "sw": "Upele wa tufaha hufanya mabaka ya kijani kwenye majani na madoa magumu kwenye tunda. Huenea katika majira ya mvua ya masika."
+    },
+    "immediate_actions": {
+      "en": [
+        "Pick off the worst leaves and collect fallen leaves from under the tree.",
+        "Do not leave infected fruit on the ground."
+      ],
+      "hi": [
+        "सबसे खराब पत्तियाँ तोड़ें और पेड़ के नीचे गिरी पत्तियाँ उठा लें।",
+        "संक्रमित फल ज़मीन पर न छोड़ें।"
+      ],
+      "sw": [
+        "Ondoa majani mabaya zaidi na kusanya majani yaliyoanguka chini ya mti.",
+        "Usiacha matunda yenye ugonjwa ardhini."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Prune so air moves through the canopy and the leaves dry after rain.",
+        "Ask extension before using a fungicide, and only at the label rate for apple."
+      ],
+      "hi": [
+        "ऐसी छँटाई करें कि हवा गुज़रे और बारिश के बाद पत्तियाँ सूख जाएँ।",
+        "कवकनाशी से पहले कृषि विभाग से पूछें, और सेब के लिए डिब्बे की मात्रा ही लें।"
+      ],
+      "sw": [
+        "Pogoa ili upepo upite na majani yakauke baada ya mvua.",
+        "Uliza ugani kabla ya dawa ya kuvu, na utumie kiwango cha lebo kwa tufaha pekee."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Rake and remove fallen leaves at the end of the season.",
+        "Choose a scab-tolerant variety when you plant the next tree."
+      ],
+      "hi": [
+        "मौसम के अंत में गिरी पत्तियाँ हटा दें।",
+        "अगला पेड़ लगाएँ तो पपड़ी सहने वाली किस्म चुनें।"
+      ],
+      "sw": [
+        "Ondoa majani yaliyoanguka mwishoni mwa msimu.",
+        "Chagua aina inayostahimili upele unapopanda mti unaofuata."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if the fruit is cracking or most of the leaves are blotched.",
+      "hi": "अगर फल फटने लगें या ज़्यादातर पत्तियों पर धब्बे हों तो मदद लें।",
+      "sw": "Omba msaada matunda yakianzia kupasuka au majani mengi yakipata mabaka."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop, follow the label rate, keep it out of drinking water, and wait the days on the label before harvest.",
+      "hi": "छिड़काव करें तो इसी फसल के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, पीने के पानी से दूर रखें, और तुड़ाई से पहले डिब्बे पर लिखे दिन रुकें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili, fuata kiwango cha lebo, usiingize dawa kwenye maji ya kunywa, na usubiri siku za lebo kabla ya kuvuna."
+    }
+  },
+  "apple_black_rot": {
+    "summary": {
+      "en": "Black rot marks leaves with brown rings and can rot the fruit from the flower end. Old mummified fruit carries it.",
+      "hi": "काले सड़न से पत्तियों पर भूरे छल्ले पड़ते हैं और फल फूल वाले सिरे से सड़ सकता है। सूखे पुराने फल इसे बनाए रखते हैं।",
+      "sw": "Uozo mweusi huacha pete za kahawia kwenye majani na unaweza kuoza tunda kuanzia upande wa ua. Matunda yaliyokauka hubeba ugonjwa."
+    },
+    "immediate_actions": {
+      "en": [
+        "Remove mummified fruit from the tree and from the ground.",
+        "Cut out dead twigs and cankers if you can do it in dry weather."
+      ],
+      "hi": [
+        "पेड़ और ज़मीन दोनों से सूखे सड़े फल हटाएँ।",
+        "सूखी टहनियाँ और कैंकर सूखे मौसम में काटें।"
+      ],
+      "sw": [
+        "Ondoa matunda yaliyokauka kutoka mtini na ardhini.",
+        "Kata matawi yaliyokufa na vidonda wakati wa ukame."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Take the infected fruit out of the orchard. Do not compost it.",
+        "Ask extension if a registered fungicide is worthwhile on this tree."
+      ],
+      "hi": [
+        "संक्रमित फल बाग से बाहर ले जाएँ। उसे खाद में न डालें।",
+        "कृषि विभाग से पूछें कि इस पेड़ पर दर्ज कवकनाशी फ़ायदेमंद है या नहीं।"
+      ],
+      "sw": [
+        "Toa matunda yenye ugonjwa shambani. Usitumbukize kwenye mbolea.",
+        "Uliza ugani kama dawa ya kuvu iliyosajiliwa inafaa kwa mti huu."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Keep the canopy open so leaves dry.",
+        "Check stored fruit and remove any that soften or turn black."
+      ],
+      "hi": [
+        "छत्र को खुला रखें ताकि पत्तियाँ सूखें।",
+        "भंडारित फल जाँचें और जो नरम या काले हों उन्हें निकालें।"
+      ],
+      "sw": [
+        "Acha taji wazi ili majani yakauke.",
+        "Kagua matunda yaliyohifadhiwa na uondoe yanayolainika au kuwa meusi."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if whole branches are dying or the crop is rotting on the tree.",
+      "hi": "अगर पूरी शाखाएँ मर रही हों या फल पेड़ पर सड़ रहा हो तो मदद लें।",
+      "sw": "Omba msaada matawi mazima yakifa au mazao yakioza mtini."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop, follow the label rate, keep it out of drinking water, and wait the days on the label before harvest.",
+      "hi": "छिड़काव करें तो इसी फसल के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, पीने के पानी से दूर रखें, और तुड़ाई से पहले डिब्बे पर लिखे दिन रुकें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili, fuata kiwango cha lebo, usiingize dawa kwenye maji ya kunywa, na usubiri siku za lebo kabla ya kuvuna."
+    }
+  },
+  "apple_cedar_rust": {
+    "summary": {
+      "en": "Cedar apple rust needs both apple and juniper. Orange spots on the leaf often have small spikes.",
+      "hi": "सेब का देवदार रतुआ सेब और जुनिपर दोनों पर निर्भर है। पत्ते पर नारंगी धब्बों में छोटे काँटे जैसे उभार होते हैं।",
+      "sw": "Kutu ya mwerezi na tufaha inahitaji tufaha na mreteni. Madoa ya machungwa kwenye jani mara nyingi huwa na miiba midogo."
+    },
+    "immediate_actions": {
+      "en": [
+        "Note whether juniper or cedar is growing nearby.",
+        "Remove the worst spotted leaves if the tree is small."
+      ],
+      "hi": [
+        "देखें कि पास में जुनिपर या देवदार है या नहीं।",
+        "पेड़ छोटा हो तो सबसे धब्बेदार पत्तियाँ हटा दें।"
+      ],
+      "sw": [
+        "Angalia kama mreteni unakua karibu.",
+        "Mti ukiwa mdogo, ondoa majani yenye madoa mabaya zaidi."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "If you control the juniper, prune off the woody galls in late winter.",
+        "Ask extension whether a registered spray is useful before the next rainy spell."
+      ],
+      "hi": [
+        "जुनिपर आपके पास हो तो देर सर्दी में लकड़ी जैसी गाँठें काट दें।",
+        "अगली बारिश से पहले दर्ज छिड़काव उपयोगी है या नहीं, कृषि विभाग से पूछें।"
+      ],
+      "sw": [
+        "Ukidhibiti mreteni, kata uvimbe wa kuni mwishoni mwa baridi.",
+        "Uliza ugani kama dawa iliyosajiliwa inafaa kabla ya mvua inayofuata."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "When you plant again, pick a rust-resistant apple variety.",
+        "Do not plant new apple trees beside heavily galled junipers."
+      ],
+      "hi": [
+        "दोबारा लगाएँ तो रतुआ सहने वाली सेब की किस्म चुनें।",
+        "गाँठों से भरे जुनिपर के बगल में नया सेब का पेड़ न लगाएँ।"
+      ],
+      "sw": [
+        "Unapopanda tena, chagua aina ya tufaha inayostahimili kutu.",
+        "Usipande miti mipya ya tufaha karibu na mireteni yenye uvimbe mwingi."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if orange spots cover most leaves or the fruit is dropping early.",
+      "hi": "अगर नारंगी धब्बे ज़्यादातर पत्तियों पर हों या फल जल्दी झड़ें तो मदद लें।",
+      "sw": "Omba msaada madoa ya machungwa yakifunika majani mengi au matunda yakianguka mapema."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop, follow the label rate, keep it out of drinking water, and wait the days on the label before harvest.",
+      "hi": "छिड़काव करें तो इसी फसल के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, पीने के पानी से दूर रखें, और तुड़ाई से पहले डिब्बे पर लिखे दिन रुकें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili, fuata kiwango cha lebo, usiingize dawa kwenye maji ya kunywa, na usubiri siku za lebo kabla ya kuvuna."
+    }
+  },
+  "apple_healthy": {
+    "summary": {
+      "en": "This apple leaf looks healthy. Keep checking the trees.",
+      "hi": "यह सेब का पत्ता स्वस्थ दिखता है। पेड़ों को देखते रहें।",
+      "sw": "Jani hili la tufaha linaonekana kuwa na afya. Endelea kukagua miti."
+    },
+    "immediate_actions": {
+      "en": [
+        "Look again in a few days, including the undersides of the leaves.",
+        "Note what you saw so the next photo has something to compare with."
+      ],
+      "hi": [
+        "कुछ दिन बाद फिर देखें, पत्तियों का निचला हिस्सा भी।",
+        "जो देखा वह लिख रखें, ताकि अगली तस्वीर से मिला सकें।"
+      ],
+      "sw": [
+        "Angalia tena baada ya siku chache, pamoja na sehemu ya chini ya majani.",
+        "Andika ulichoona ili uweze kulinganisha na picha inayofuata."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "No treatment is needed while the plants stay like this.",
+        "Leave the insects that eat pests alone."
+      ],
+      "hi": [
+        "जब तक पौधे ऐसे रहें, इलाज की ज़रूरत नहीं।",
+        "जो कीड़े कीट खाते हैं, उन्हें न मारें।"
+      ],
+      "sw": [
+        "Hakuna tiba inayohitajika wakati mimea inabaki hivi.",
+        "Waache wadudu wanaokula wadudu waharibifu."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Use clean seed or planting material and do not crowd the rows.",
+        "Water the soil rather than the leaves."
+      ],
+      "hi": [
+        "साफ बीज या रोपण सामग्री लें और कतारें घनी न रखें।",
+        "पत्तियों पर नहीं, मिट्टी पर पानी दें।"
+      ],
+      "sw": [
+        "Tumia mbegu au miche safi, wala usisongeze mistari.",
+        "Mwagilia udongo, si majani."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if spots, wilt, or insects spread beyond a few plants.",
+      "hi": "अगर धब्बे, मुरझाना या कीट कुछ पौधों से आगे बढ़ें तो मदद लें।",
+      "sw": "Omba msaada madoa, kunyauka, au wadudu vikipita mimea michache."
+    },
+    "caution": {
+      "en": "Do not spray a healthy crop just in case. A needless spray costs money and kills insects that eat pests.",
+      "hi": "स्वस्थ फसल पर यों ही छिड़काव न करें। फालतू छिड़काव पैसा गँवाता है और उन कीड़ों को मारता है जो कीट खाते हैं।",
+      "sw": "Usinyunyizie zao lenye afya bila sababu. Dawa isiyo na haja inapoteza pesa na inaua wadudu wanaokula wadudu waharibifu."
+    }
+  },
+  "cassava_bacterial_blight": {
+    "summary": {
+      "en": "Cassava bacterial blight causes angular wet spots, leaf wilt, and gum on the stem. It travels on cuttings and tools.",
+      "hi": "कसावा का जीवाणु झुलसा कोणदार गीले धब्बे, पत्तों का मुरझाना और तने पर गोंद बनाता है। यह कटिंग और औजारों से जाता है।",
+      "sw": "Baka la bakteria la muhogo hufanya madoa yenye unyevu, majani kunyauka, na utomvu kwenye shina. Husafiri na vipandikizi na vifaa."
+    },
+    "immediate_actions": {
+      "en": [
+        "Pull out plants that are wilting and take them off the field.",
+        "Wash knives before you cut the next plant."
+      ],
+      "hi": [
+        "मुरझाते पौधे उखाड़कर खेत से बाहर ले जाएँ।",
+        "अगला पौधा काटने से पहले चाकू धोएँ।"
+      ],
+      "sw": [
+        "Ng'oa mimea inayonyauka na uitoe shambani.",
+        "Osha visu kabla ya kukata mmea unaofuata."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Do not take cuttings from this field for the next planting.",
+        "Burn or bury the sick stems away from the crop. Do not compost them."
+      ],
+      "hi": [
+        "अगली रोपाई के लिए इस खेत से कटिंग न लें।",
+        "बीमार तने फसल से दूर जलाएँ या गाड़ें। खाद में न डालें।"
+      ],
+      "sw": [
+        "Usichukue vipandikizi kutoka shamba hili kwa upandaji ujao.",
+        "Choma au zika shina mbaya mbali na zao. Usitumbukize kwenye mbolea."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Plant cuttings only from a field that stayed healthy.",
+        "Ask extension about a variety that tolerates bacterial blight."
+      ],
+      "hi": [
+        "कटिंग उसी खेत से लें जो स्वस्थ रहा हो।",
+        "जीवाणु झुलसा सहने वाली किस्म के बारे में कृषि विभाग से पूछें।"
+      ],
+      "sw": [
+        "Panda vipandikizi kutoka shamba lililobaki na afya pekee.",
+        "Uliza ugani kuhusu aina inayostahimili baka la bakteria."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if gum and wilt show up in more than a few plants.",
+      "hi": "अगर गोंद और मुरझाना कुछ पौधों से ज़्यादा में दिखे तो मदद लें।",
+      "sw": "Omba msaada utomvu na kunyauka vikionekana kwa mimea zaidi ya michache."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop, follow the label rate, keep it out of drinking water, and wait the days on the label before harvest.",
+      "hi": "छिड़काव करें तो इसी फसल के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, पीने के पानी से दूर रखें, और तुड़ाई से पहले डिब्बे पर लिखे दिन रुकें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili, fuata kiwango cha lebo, usiingize dawa kwenye maji ya kunywa, na usubiri siku za lebo kabla ya kuvuna."
+    }
+  },
+  "cassava_brown_streak": {
+    "summary": {
+      "en": "Cassava brown streak can leave the top looking fair while the roots rot inside. Yellow blotches follow the veins.",
+      "hi": "कसावा की भूरी धार ऊपर से पौधा ठीक दिखा सकती है, जबकि जड़ें अंदर से सड़ती हैं। पीले धब्बे शिराओं के साथ चलते हैं।",
+      "sw": "Mstari wa kahawia wa muhogo unaweza kuacha juu ikionekana sawa wakati mizizi inaoza ndani. Mabaka ya manjano hufuata mishipa."
+    },
+    "immediate_actions": {
+      "en": [
+        "Dig one root and cut it open. Brown dry rot inside is the check.",
+        "Mark the plants you cut so you do not save them as seed."
+      ],
+      "hi": [
+        "एक जड़ खोदकर काटें। अंदर भूरा सूखा सड़न ही निशानी है।",
+        "काटे हुए पौधों पर निशान लगाएँ ताकि उन्हें बीज न बनाएँ।"
+      ],
+      "sw": [
+        "Chimba mzizi mmoja na uupasue. Uozo mkavu wa kahawia ndani ndio uthibitisho.",
+        "Weka alama kwenye mimea uliyokata usiitunze kama mbegu."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Eat or sell roots that are still sound, and discard rotten ones away from the field.",
+        "Do not replant stems from plants that showed the vein yellowing."
+      ],
+      "hi": [
+        "जो जड़ें अभी ठीक हों उन्हें खाएँ या बेचें, सड़ी जड़ें खेत से दूर फेंकें।",
+        "जिन पौधों की शिराएँ पीली हुईं, उनके तने दोबारा न लगाएँ।"
+      ],
+      "sw": [
+        "Kula au uze mizizi iliyo bado nzima, na utupe iliyooza mbali na shamba.",
+        "Usipande tena shina za mimea iliyoonyesha manjano kwenye mishipa."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Start the next crop from cuttings taken in a field without brown streak.",
+        "Ask extension for a variety that tolerates brown streak in your area."
+      ],
+      "hi": [
+        "अगली फसल ऐसे खेत की कटिंग से शुरू करें जहाँ भूरी धार न रही हो।",
+        "अपने इलाके में भूरी धार सहने वाली किस्म कृषि विभाग से पूछें।"
+      ],
+      "sw": [
+        "Anzisha zao lijalo na vipandikizi kutoka shamba bila mstari wa kahawia.",
+        "Uliza ugani aina inayostahimili mstari wa kahawia katika eneo lako."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if many roots are rotten or you cannot tell which plants are safe to replant.",
+      "hi": "अगर कई जड़ें सड़ी हों या पता न चले कौन से पौधे दोबारा लगाना सुरक्षित है तो मदद लें।",
+      "sw": "Omba msaada mizizi mingi ikiwa imezoa au usipojua mimea ipi ni salama kupanda tena."
+    },
+    "caution": {
+      "en": "A spray does not remove this virus. Pull out sick plants, and wash your hands and tools before you touch healthy ones.",
+      "hi": "छिड़काव इस वायरस को नहीं मिटाता। बीमार पौधे उखाड़ें, और स्वस्थ पौधे छूने से पहले हाथ और औजार धोएँ।",
+      "sw": "Dawa haiondoi virusi hivi. Ng'oa mimea mbaya, na osha mikono na vifaa kabla ya kugusa mimea yenye afya."
+    }
+  },
+  "cassava_green_mottle": {
+    "summary": {
+      "en": "Cassava green mottle is a virus. Leaves pucker and show pale mottling. Whiteflies move it between plants.",
+      "hi": "कसावा का हरा चितकबरापन एक वायरस है। पत्तियाँ सिकुड़ती हैं और हल्के धब्बे दिखाती हैं। सफेद मक्खी इसे पौधों के बीच ले जाती है।",
+      "sw": "Madoa ya kijani ya muhogo ni virusi. Majani hukunjamana na kuonyesha mabaka meupe. Nzi weupe huisafirisha kati ya mimea."
+    },
+    "immediate_actions": {
+      "en": [
+        "Pull out the mottled plants early, before whiteflies multiply on them.",
+        "Look under the leaves for whiteflies."
+      ],
+      "hi": [
+        "चितकबरे पौधे जल्दी उखाड़ें, इससे पहले कि उन पर सफेद मक्खी बढ़े।",
+        "पत्तियों के नीचे सफेद मक्खी देखें।"
+      ],
+      "sw": [
+        "Ng'oa mimea yenye mabaka mapema, kabla nzi weupe hawajazidiana juu yake.",
+        "Angalia chini ya majani kama kuna nzi weupe."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Take the pulled plants off the field. Do not leave them in the row.",
+        "Do not take cuttings from mottled plants."
+      ],
+      "hi": [
+        "उखाड़े पौधे खेत से बाहर ले जाएँ। कतार में न छोड़ें।",
+        "चितकबरे पौधों से कटिंग न लें।"
+      ],
+      "sw": [
+        "Toa mimea iliyong'olewa shambani. Usiache kwenye mstari.",
+        "Usichukue vipandikizi kutoka mimea yenye mabaka."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Plant clean cuttings and keep weeds down, because whiteflies rest on them.",
+        "A yellow sticky trap helps you see when whiteflies are building up."
+      ],
+      "hi": [
+        "साफ कटिंग लगाएँ और खरपतवार कम रखें, क्योंकि सफेद मक्खी उन पर बैठती है।",
+        "पीला चिपचिपा जाल बताता है कि सफेद मक्खी कब बढ़ रही है।"
+      ],
+      "sw": [
+        "Panda vipandikizi safi na punguza magugu, kwa sababu nzi weupe hukaa juu yake.",
+        "Mtego wa manjano unaonata husaidia kuona nzi weupe wanapoongezeka."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if mottling is spreading across the field or you have no clean cuttings left.",
+      "hi": "अगर चितकबरापन पूरे खेत में फैल रहा हो या साफ कटिंग बची न हो तो मदद लें।",
+      "sw": "Omba msaada mabaka yakisambaa shambani au usipokuwa na vipandikizi safi."
+    },
+    "caution": {
+      "en": "A spray does not remove this virus. Pull out sick plants, and wash your hands and tools before you touch healthy ones.",
+      "hi": "छिड़काव इस वायरस को नहीं मिटाता। बीमार पौधे उखाड़ें, और स्वस्थ पौधे छूने से पहले हाथ और औजार धोएँ।",
+      "sw": "Dawa haiondoi virusi hivi. Ng'oa mimea mbaya, na osha mikono na vifaa kabla ya kugusa mimea yenye afya."
+    }
+  },
+  "cassava_mosaic": {
+    "summary": {
+      "en": "Cassava mosaic virus twists and yellows the leaves. Whiteflies spread it, and sick cuttings start a new field already infected.",
+      "hi": "कसावा मोजेक वायरस पत्तियों को मोड़ता और पीला करता है। सफेद मक्खी इसे फैलाती है, और बीमार कटिंग नया खेत पहले से संक्रमित शुरू करती है।",
+      "sw": "Virusi vya mosaic ya muhogo hupindisha na kuweka manjano kwenye majani. Nzi weupe huisambaza, na vipandikizi vibaya huanzisha shamba likiwa tayari limeambukizwa."
+    },
+    "immediate_actions": {
+      "en": [
+        "Rogue the twisted plants as soon as you see them.",
+        "Check the undersides of leaves for whiteflies."
+      ],
+      "hi": [
+        "मुड़ी पत्तियों वाले पौधे दिखते ही निकालें।",
+        "पत्तियों के नीचे सफेद मक्खी देखें।"
+      ],
+      "sw": [
+        "Ng'oa mimea iliyopindika mara tu unapoiona.",
+        "Kagua sehemu ya chini ya majani kwa nzi weupe."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Remove rogued plants from the field the same day.",
+        "Do not save stems from mosaic plants for the next planting."
+      ],
+      "hi": [
+        "निकाले पौधे उसी दिन खेत से हटाएँ।",
+        "मोजेक वाले पौधों के तने अगली रोपाई के लिए न रखें।"
+      ],
+      "sw": [
+        "Ondoa mimea iliyong'olewa shambani siku hiyo hiyo.",
+        "Usitunze shina za mimea ya mosaic kwa upandaji ujao."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Ask extension for a mosaic-tolerant variety and clean cuttings.",
+        "Keep the field weeded so whiteflies have fewer resting places."
+      ],
+      "hi": [
+        "मोजेक सहने वाली किस्म और साफ कटिंग कृषि विभाग से पूछें।",
+        "खेत की निराई रखें ताकि सफेद मक्खी को कम जगह मिले।"
+      ],
+      "sw": [
+        "Uliza ugani aina inayostahimili mosaic na vipandikizi safi.",
+        "Palilia shamba ili nzi weupe wapate sehemu chache za kupumzika."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if most plants are twisted or the crop is too weak to make roots.",
+      "hi": "अगर ज़्यादातर पौधे मुड़े हों या फसल जड़ें बनाने लायक न रहे तो मदद लें।",
+      "sw": "Omba msaada mimea mingi ikipindika au zao likikosa nguvu ya kuunda mizizi."
+    },
+    "caution": {
+      "en": "A spray does not remove this virus. Pull out sick plants, and wash your hands and tools before you touch healthy ones.",
+      "hi": "छिड़काव इस वायरस को नहीं मिटाता। बीमार पौधे उखाड़ें, और स्वस्थ पौधे छूने से पहले हाथ और औजार धोएँ।",
+      "sw": "Dawa haiondoi virusi hivi. Ng'oa mimea mbaya, na osha mikono na vifaa kabla ya kugusa mimea yenye afya."
+    }
+  },
+  "cassava_healthy": {
+    "summary": {
+      "en": "This cassava plant looks healthy. Keep checking the field.",
+      "hi": "यह कसावा का पौधा स्वस्थ दिखता है। खेत को देखते रहें।",
+      "sw": "Mmea huu wa muhogo unaonekana kuwa na afya. Endelea kukagua shamba."
+    },
+    "immediate_actions": {
+      "en": [
+        "Look again in a few days, including the undersides of the leaves.",
+        "Note what you saw so the next photo has something to compare with."
+      ],
+      "hi": [
+        "कुछ दिन बाद फिर देखें, पत्तियों का निचला हिस्सा भी।",
+        "जो देखा वह लिख रखें, ताकि अगली तस्वीर से मिला सकें।"
+      ],
+      "sw": [
+        "Angalia tena baada ya siku chache, pamoja na sehemu ya chini ya majani.",
+        "Andika ulichoona ili uweze kulinganisha na picha inayofuata."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "No treatment is needed while the plants stay like this.",
+        "Leave the insects that eat pests alone."
+      ],
+      "hi": [
+        "जब तक पौधे ऐसे रहें, इलाज की ज़रूरत नहीं।",
+        "जो कीड़े कीट खाते हैं, उन्हें न मारें।"
+      ],
+      "sw": [
+        "Hakuna tiba inayohitajika wakati mimea inabaki hivi.",
+        "Waache wadudu wanaokula wadudu waharibifu."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Use clean seed or planting material and do not crowd the rows.",
+        "Water the soil rather than the leaves."
+      ],
+      "hi": [
+        "साफ बीज या रोपण सामग्री लें और कतारें घनी न रखें।",
+        "पत्तियों पर नहीं, मिट्टी पर पानी दें।"
+      ],
+      "sw": [
+        "Tumia mbegu au miche safi, wala usisongeze mistari.",
+        "Mwagilia udongo, si majani."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if spots, wilt, or insects spread beyond a few plants.",
+      "hi": "अगर धब्बे, मुरझाना या कीट कुछ पौधों से आगे बढ़ें तो मदद लें।",
+      "sw": "Omba msaada madoa, kunyauka, au wadudu vikipita mimea michache."
+    },
+    "caution": {
+      "en": "Do not spray a healthy crop just in case. A needless spray costs money and kills insects that eat pests.",
+      "hi": "स्वस्थ फसल पर यों ही छिड़काव न करें। फालतू छिड़काव पैसा गँवाता है और उन कीड़ों को मारता है जो कीट खाते हैं।",
+      "sw": "Usinyunyizie zao lenye afya bila sababu. Dawa isiyo na haja inapoteza pesa na inaua wadudu wanaokula wadudu waharibifu."
+    }
+  },
+  "maize_gray_leaf_spot": {
+    "summary": {
+      "en": "Gray leaf spot makes long gray rectangles on maize leaves. It carries over on old stalk residue.",
+      "hi": "धूसर पत्ती धब्बा मक्का की पत्तियों पर लंबे धूसर आयत बनाता है। यह पुराने तनों के अवशेष पर बना रहता है।",
+      "sw": "Doa la kijivu la jani hufanya miraba mirefu ya kijivu kwenye majani ya mahindi. Hubaki kwenye mabaki ya shina."
+    },
+    "immediate_actions": {
+      "en": [
+        "Confirm the spots are rectangular and bounded by the veins.",
+        "Note how far up the plant the spots have climbed."
+      ],
+      "hi": [
+        "देख लें कि धब्बे आयताकार हैं और शिराओं के बीच सिमटे हैं।",
+        "देखें धब्बे पौधे पर कितना ऊपर चढ़े हैं।"
+      ],
+      "sw": [
+        "Hakikisha madoa ni ya mstatili na yamebanwa na mishipa.",
+        "Angalia madoa yamepanda kwa kiasi gani kwenye mmea."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "If the ear leaf is still clean, cultural steps may be enough. Ask extension before spraying.",
+        "Do not bury yourself in a spray if the crop is already drying down."
+      ],
+      "hi": [
+        "अगर भुट्टे वाली पत्ती अभी साफ है तो खेत के काम काफ़ी हो सकते हैं। छिड़काव से पहले कृषि विभाग से पूछें।",
+        "फसल सूखने लगी हो तो छिड़काव में पैसा न लगाएँ।"
+      ],
+      "sw": [
+        "Jani la suke likiwa bado safi, kazi za shamba zinaweza kutosha. Uliza ugani kabla ya kunyunyizia.",
+        "Usitumie pesa kwa dawa zao likiwa tayari linakauka."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Rotate out of maize, or remove residue before the next maize crop.",
+        "Avoid a very dense stand, which keeps the leaves wet."
+      ],
+      "hi": [
+        "मक्का के बाद दूसरी फसल लगाएँ, या अगली मक्का से पहले अवशेष हटाएँ।",
+        "बहुत घनी बुवाई न करें, उससे पत्तियाँ गीली रहती हैं।"
+      ],
+      "sw": [
+        "Badilisha mazao baada ya mahindi, au ondoa mabaki kabla ya mahindi yajayo.",
+        "Epuka msongamano mkubwa, unaacha majani yakae na unyevu."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if the spots reach the ear leaf while the grain is still filling.",
+      "hi": "अगर दाना भरते समय धब्बे भुट्टे वाली पत्ती तक पहुँच जाएँ तो मदद लें।",
+      "sw": "Omba msaada madoa yakifika jani la suke nafaka bado inajaa."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop, follow the label rate, keep it out of drinking water, and wait the days on the label before harvest.",
+      "hi": "छिड़काव करें तो इसी फसल के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, पीने के पानी से दूर रखें, और तुड़ाई से पहले डिब्बे पर लिखे दिन रुकें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili, fuata kiwango cha lebo, usiingize dawa kwenye maji ya kunywa, na usubiri siku za lebo kabla ya kuvuna."
+    }
+  },
+  "maize_common_rust": {
+    "summary": {
+      "en": "Common rust shows as powdery brown pustules on the maize leaf. A late, light infection often does little harm.",
+      "hi": "साधारण रतुआ मक्का की पत्ती पर भूरे चूर्णी फफोले दिखाता है। देर से हल्का संक्रमण अक्सर कम नुकसान करता है।",
+      "sw": "Kutu ya kawaida huonekana kama malengelenge ya kahawia yenye unga kwenye jani la mahindi. Maambukizi mepesi ya marehemu mara nyingi hayadhuru sana."
+    },
+    "immediate_actions": {
+      "en": [
+        "Rub a spot. Rust powder comes off on the finger.",
+        "See whether the pustules are only on the lower leaves."
+      ],
+      "hi": [
+        "धब्बे को रगड़ें। रतुए का चूर्ण उँगली पर लगता है।",
+        "देखें फफोले सिर्फ़ नीचे की पत्तियों पर हैं या नहीं।"
+      ],
+      "sw": [
+        "Sugua doa. Unga wa kutu hubaki kwenye kidole.",
+        "Angalia kama malengelenge yako kwenye majani ya chini pekee."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "If rust arrives after tasseling and stays low, you can usually wait it out.",
+        "Ask extension before spraying a young crop that is already heavily rusted."
+      ],
+      "hi": [
+        "अगर रतुआ मूँज निकलने के बाद आए और नीचे रहे, तो अक्सर इंतज़ार काफ़ी होता है।",
+        "जो युवा फसल पहले से भारी रतुए से भरी हो, छिड़काव से पहले कृषि विभाग से पूछें।"
+      ],
+      "sw": [
+        "Kutu ikija baada ya kuchanua na ikabaki chini, kwa kawaida unaweza kusubiri.",
+        "Uliza ugani kabla ya kunyunyizia zao changa ambalo tayari lina kutu nyingi."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Next season, ask for a hybrid with rust resistance.",
+        "Do not plant the next maize crop on a calendar that keeps leaves wet for long stretches."
+      ],
+      "hi": [
+        "अगले मौसम रतुआ सहने वाला संकर माँगें।",
+        "अगली मक्का ऐसे समय न लगाएँ कि पत्तियाँ लंबे समय तक गीली रहें।"
+      ],
+      "sw": [
+        "Msimu ujao, omba mseto unaostahimili kutu.",
+        "Usipande mahindi yajayo kwa kalenda inayoacha majani yakae na unyevu kwa muda mrefu."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if pustules cover the upper leaves before the ears fill.",
+      "hi": "अगर भुट्टा भरने से पहले ऊपर की पत्तियाँ फफोलों से भर जाएँ तो मदद लें।",
+      "sw": "Omba msaada malengelenge yakifunika majani ya juu kabla masuke hajajaa."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop, follow the label rate, keep it out of drinking water, and wait the days on the label before harvest.",
+      "hi": "छिड़काव करें तो इसी फसल के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, पीने के पानी से दूर रखें, और तुड़ाई से पहले डिब्बे पर लिखे दिन रुकें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili, fuata kiwango cha lebo, usiingize dawa kwenye maji ya kunywa, na usubiri siku za lebo kabla ya kuvuna."
+    }
+  },
+  "maize_northern_leaf_blight": {
+    "summary": {
+      "en": "Northern leaf blight makes long gray-green streaks on maize, like a cigar. It survives in crop residue.",
+      "hi": "उत्तरी पत्ती झुलसा मक्का पर लंबे धूसर-हरे धारियाँ बनाता है, सिगार जैसी। यह फसल अवशेष में बना रहता है।",
+      "sw": "Baka la jani la kaskazini hufanya michirizi mirefu ya kijivu-kijani kwenye mahindi, kama sigara. Hubaki kwenye mabaki ya zao."
+    },
+    "immediate_actions": {
+      "en": [
+        "Check whether the long lesions have reached the ear leaf.",
+        "Keep people from walking a wet crop, which spreads spores."
+      ],
+      "hi": [
+        "देखें लंबी धारियाँ भुट्टे वाली पत्ती तक पहुँची हैं या नहीं।",
+        "गीली फसल में लोगों को चलने न दें, इससे बीजाणु फैलते हैं।"
+      ],
+      "sw": [
+        "Angalia kama vidonda virefu vimefika jani la suke.",
+        "Usiruhusu watu kutembea kwenye zao lenye unyevu, husambaza vijidudu."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Remove heavily blighted leaves only on a small plot you can finish. Do not compost them.",
+        "Ask extension before a fungicide. It only pays if the ear leaf is at risk and the grain is still filling."
+      ],
+      "hi": [
+        "बहुत झुलसी पत्तियाँ सिर्फ़ छोटे खेत में हटाएँ जिसे आप पूरा कर सकें। खाद में न डालें।",
+        "कवकनाशी से पहले कृषि विभाग से पूछें। फ़ायदा तभी जब भुट्टे वाली पत्ती खतरे में हो और दाना अभी भर रहा हो।"
+      ],
+      "sw": [
+        "Ondoa majani yenye baka kali tu kwenye shamba dogo unaloweza kumaliza. Usitumbukize kwenye mbolea.",
+        "Uliza ugani kabla ya dawa ya kuvu. Inalipa tu jani la suke likiwa hatarini na nafaka bado inajaa."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Rotate, and do not leave maize residue on the surface into the next maize season.",
+        "Plant a resistant hybrid next time."
+      ],
+      "hi": [
+        "फसल बदलें, और अगले मक्का मौसम तक अवशेष सतह पर न छोड़ें।",
+        "अगली बार प्रतिरोधी संकर लगाएँ।"
+      ],
+      "sw": [
+        "Badilisha mazao, wala usiache mabaki ya mahindi juu ya udongo hadi msimu ujao.",
+        "Panda mseto unaostahimili wakati mwingine."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if long lesions cover the ear leaf while cobs are still small.",
+      "hi": "अगर भुट्टे छोटे हों और भुट्टे वाली पत्ती लंबी धारियों से भर जाए तो मदद लें।",
+      "sw": "Omba msaada vidonda virefu vikifunika jani la suke wakati masuke bado madogo."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop, follow the label rate, keep it out of drinking water, and wait the days on the label before harvest.",
+      "hi": "छिड़काव करें तो इसी फसल के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, पीने के पानी से दूर रखें, और तुड़ाई से पहले डिब्बे पर लिखे दिन रुकें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili, fuata kiwango cha lebo, usiingize dawa kwenye maji ya kunywa, na usubiri siku za lebo kabla ya kuvuna."
+    }
+  },
+  "maize_healthy": {
+    "summary": {
+      "en": "This maize plant looks healthy. Keep checking the field.",
+      "hi": "यह मक्का का पौधा स्वस्थ दिखता है। खेत को देखते रहें।",
+      "sw": "Mmea huu wa mahindi unaonekana kuwa na afya. Endelea kukagua shamba."
+    },
+    "immediate_actions": {
+      "en": [
+        "Look again in a few days, including the undersides of the leaves.",
+        "Note what you saw so the next photo has something to compare with."
+      ],
+      "hi": [
+        "कुछ दिन बाद फिर देखें, पत्तियों का निचला हिस्सा भी।",
+        "जो देखा वह लिख रखें, ताकि अगली तस्वीर से मिला सकें।"
+      ],
+      "sw": [
+        "Angalia tena baada ya siku chache, pamoja na sehemu ya chini ya majani.",
+        "Andika ulichoona ili uweze kulinganisha na picha inayofuata."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "No treatment is needed while the plants stay like this.",
+        "Leave the insects that eat pests alone."
+      ],
+      "hi": [
+        "जब तक पौधे ऐसे रहें, इलाज की ज़रूरत नहीं।",
+        "जो कीड़े कीट खाते हैं, उन्हें न मारें।"
+      ],
+      "sw": [
+        "Hakuna tiba inayohitajika wakati mimea inabaki hivi.",
+        "Waache wadudu wanaokula wadudu waharibifu."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Use clean seed or planting material and do not crowd the rows.",
+        "Water the soil rather than the leaves."
+      ],
+      "hi": [
+        "साफ बीज या रोपण सामग्री लें और कतारें घनी न रखें।",
+        "पत्तियों पर नहीं, मिट्टी पर पानी दें।"
+      ],
+      "sw": [
+        "Tumia mbegu au miche safi, wala usisongeze mistari.",
+        "Mwagilia udongo, si majani."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if spots, wilt, or insects spread beyond a few plants.",
+      "hi": "अगर धब्बे, मुरझाना या कीट कुछ पौधों से आगे बढ़ें तो मदद लें।",
+      "sw": "Omba msaada madoa, kunyauka, au wadudu vikipita mimea michache."
+    },
+    "caution": {
+      "en": "Do not spray a healthy crop just in case. A needless spray costs money and kills insects that eat pests.",
+      "hi": "स्वस्थ फसल पर यों ही छिड़काव न करें। फालतू छिड़काव पैसा गँवाता है और उन कीड़ों को मारता है जो कीट खाते हैं।",
+      "sw": "Usinyunyizie zao lenye afya bila sababu. Dawa isiyo na haja inapoteza pesa na inaua wadudu wanaokula wadudu waharibifu."
+    }
+  },
+  "potato_early_blight": {
+    "summary": {
+      "en": "Potato early blight starts on older leaves as brown target rings. It likes warm humid weather and stressed plants.",
+      "hi": "आलू का अगेती झुलसा पुरानी पत्तियों पर भूरे निशाने जैसे छल्लों से शुरू होता है। गर्म नम मौसम और कमज़ोर पौधों पर बढ़ता है।",
+      "sw": "Baka la mapema la viazi huanza kwenye majani ya zamani kama pete za kahawia. Hupendelea joto, unyevu, na mimea dhaifu."
+    },
+    "immediate_actions": {
+      "en": [
+        "Remove the worst lower leaves if the plot is small.",
+        "Water the furrow in the morning so the leaves dry."
+      ],
+      "hi": [
+        "खेत छोटा हो तो सबसे खराब नीचे की पत्तियाँ हटाएँ।",
+        "सुबह क्यारी में पानी दें ताकि पत्तियाँ सूख जाएँ।"
+      ],
+      "sw": [
+        "Shamba likiwa dogo, ondoa majani ya chini yaliyo mabaya zaidi.",
+        "Mwagilia mfereji asubuhi ili majani yakauke."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Hill soil so tubers are covered, and do not harvest while the tops are still wet.",
+        "Ask extension before a fungicide. Follow the label for potato."
+      ],
+      "hi": [
+        "मिट्टी चढ़ाएँ ताकि कंद ढक जाएँ, और ऊपर का हिस्सा गीला हो तो खुदाई न करें।",
+        "कवकनाशी से पहले कृषि विभाग से पूछें। आलू के डिब्बे की मात्रा मानें।"
+      ],
+      "sw": [
+        "Finika mizizi kwa udongo, wala usivune sehemu ya juu ikiwa bado na unyevu.",
+        "Uliza ugani kabla ya dawa ya kuvu. Fuata lebo ya viazi."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Rotate away from potato and tomato for at least a season.",
+        "Feed and water evenly so plants are not stressed."
+      ],
+      "hi": [
+        "कम से कम एक मौसम आलू और टमाटर से हटकर फसल लगाएँ।",
+        "खाद और पानी बराबर दें ताकि पौधे कमज़ोर न पड़ें।"
+      ],
+      "sw": [
+        "Badilisha mazao mbali na viazi na nyanya kwa angalau msimu mmoja.",
+        "Weka mbolea na maji kwa usawa ili mimea isidhoofike."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if the rings climb into the young leaves or the tubers are spotting.",
+      "hi": "अगर छल्ले नई पत्तियों तक चढ़ जाएँ या कंदों पर धब्बे पड़ें तो मदद लें।",
+      "sw": "Omba msaada pete zikipanda hadi majani machanga au mizizi ikipata madoa."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop, follow the label rate, keep it out of drinking water, and wait the days on the label before harvest.",
+      "hi": "छिड़काव करें तो इसी फसल के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, पीने के पानी से दूर रखें, और तुड़ाई से पहले डिब्बे पर लिखे दिन रुकें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili, fuata kiwango cha lebo, usiingize dawa kwenye maji ya kunywa, na usubiri siku za lebo kabla ya kuvuna."
+    }
+  },
+  "potato_late_blight": {
+    "summary": {
+      "en": "Potato late blight spreads fast in cool wet weather and can wipe out the crop. Dark wet lesions and a pale edge are the warning.",
+      "hi": "आलू का पछेती झुलसा ठंडे गीले मौसम में तेज़ी से फैलता है और फसल मिटा सकता है। गहरे गीले धब्बे और हल्की किनारी चेतावनी है।",
+      "sw": "Baka la marehemu la viazi huenea haraka katika baridi yenye unyevu na linaweza kuangamiza zao. Vidonda vyeusi vya unyevu na ukingo mwepesi ndio onyo."
+    },
+    "immediate_actions": {
+      "en": [
+        "Stop irrigation that wets the leaves.",
+        "Tell neighbors. Their potato and tomato fields can catch it the same week."
+      ],
+      "hi": [
+        "पत्तियाँ भिगोने वाला पानी बंद करें।",
+        "पड़ोसियों को बताएँ। उनके आलू और टमाटर उसी हफ्ते पकड़ सकते हैं।"
+      ],
+      "sw": [
+        "Acha umwagiliaji unaolowesha majani.",
+        "Waambie majirani. Mashamba yao ya viazi na nyanya yanaweza kuambukizwa wiki hiyo hiyo."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Destroy collapsing haulms. Do not compost them and do not leave them in the row.",
+        "Ask extension the same day about a registered product. This disease does not wait."
+      ],
+      "hi": [
+        "गिरते तने नष्ट करें। खाद में न डालें और कतार में न छोड़ें।",
+        "दर्ज दवा के लिए उसी दिन कृषि विभाग से पूछें। यह रोग इंतज़ार नहीं करता।"
+      ],
+      "sw": [
+        "Haribu shina zinazoanguka. Usitumbukize kwenye mbolea wala usiziache kwenye mstari.",
+        "Uliza ugani siku hiyo hiyo kuhusu dawa iliyosajiliwa. Ugonjwa huu hausubiri."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Plant certified seed next time and avoid a variety that blighted badly here.",
+        "Keep tubers covered with soil so spores do not wash onto them."
+      ],
+      "hi": [
+        "अगली बार प्रमाणित बीज लगाएँ और वह किस्म न लें जो यहाँ बुरी तरह झुलसी।",
+        "कंदों पर मिट्टी जमा रखें ताकि बीजाणु उन पर न बहें।"
+      ],
+      "sw": [
+        "Panda mbegu iliyoidhinishwa wakati mwingine na uepuke aina iliyooza vibaya hapa.",
+        "Finika mizizi kwa udongo ili vijidudu visisombwe juu yake."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help now if you see late blight. Waiting a few days can lose the field.",
+      "hi": "पछेती झुलसा दिखे तो अभी मदद लें। कुछ दिन रुकने से खेत जा सकता है।",
+      "sw": "Omba msaada sasa ukiona baka la marehemu. Kusubiri siku chache kunaweza kupoteza shamba."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop, follow the label rate, keep it out of drinking water, and wait the days on the label before harvest.",
+      "hi": "छिड़काव करें तो इसी फसल के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, पीने के पानी से दूर रखें, और तुड़ाई से पहले डिब्बे पर लिखे दिन रुकें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili, fuata kiwango cha lebo, usiingize dawa kwenye maji ya kunywa, na usubiri siku za lebo kabla ya kuvuna."
+    }
+  },
+  "potato_healthy": {
+    "summary": {
+      "en": "This potato plant looks healthy. Keep checking the field.",
+      "hi": "यह आलू का पौधा स्वस्थ दिखता है। खेत को देखते रहें।",
+      "sw": "Mmea huu wa viazi unaonekana kuwa na afya. Endelea kukagua shamba."
+    },
+    "immediate_actions": {
+      "en": [
+        "Look again in a few days, including the undersides of the leaves.",
+        "Note what you saw so the next photo has something to compare with."
+      ],
+      "hi": [
+        "कुछ दिन बाद फिर देखें, पत्तियों का निचला हिस्सा भी।",
+        "जो देखा वह लिख रखें, ताकि अगली तस्वीर से मिला सकें।"
+      ],
+      "sw": [
+        "Angalia tena baada ya siku chache, pamoja na sehemu ya chini ya majani.",
+        "Andika ulichoona ili uweze kulinganisha na picha inayofuata."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "No treatment is needed while the plants stay like this.",
+        "Leave the insects that eat pests alone."
+      ],
+      "hi": [
+        "जब तक पौधे ऐसे रहें, इलाज की ज़रूरत नहीं।",
+        "जो कीड़े कीट खाते हैं, उन्हें न मारें।"
+      ],
+      "sw": [
+        "Hakuna tiba inayohitajika wakati mimea inabaki hivi.",
+        "Waache wadudu wanaokula wadudu waharibifu."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Use clean seed or planting material and do not crowd the rows.",
+        "Water the soil rather than the leaves."
+      ],
+      "hi": [
+        "साफ बीज या रोपण सामग्री लें और कतारें घनी न रखें।",
+        "पत्तियों पर नहीं, मिट्टी पर पानी दें।"
+      ],
+      "sw": [
+        "Tumia mbegu au miche safi, wala usisongeze mistari.",
+        "Mwagilia udongo, si majani."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if spots, wilt, or insects spread beyond a few plants.",
+      "hi": "अगर धब्बे, मुरझाना या कीट कुछ पौधों से आगे बढ़ें तो मदद लें।",
+      "sw": "Omba msaada madoa, kunyauka, au wadudu vikipita mimea michache."
+    },
+    "caution": {
+      "en": "Do not spray a healthy crop just in case. A needless spray costs money and kills insects that eat pests.",
+      "hi": "स्वस्थ फसल पर यों ही छिड़काव न करें। फालतू छिड़काव पैसा गँवाता है और उन कीड़ों को मारता है जो कीट खाते हैं।",
+      "sw": "Usinyunyizie zao lenye afya bila sababu. Dawa isiyo na haja inapoteza pesa na inaua wadudu wanaokula wadudu waharibifu."
+    }
+  },
+  "tomato_bacterial_spot": {
+    "summary": {
+      "en": "Tomato bacterial spot makes small dark greasy spots on leaves and raised spots on fruit. Rain splash and wet hands spread it.",
+      "hi": "टमाटर का जीवाणु धब्बा पत्तियों पर छोटे गहरे चिकने धब्बे और फल पर उभरे दाग बनाता है। बारिश के छींटे और गीले हाथ इसे फैलाते हैं।",
+      "sw": "Doa la bakteria la nyanya hufanya madoa madogo meusi yenye mafuta kwenye majani na madoa yaliyoinuka kwenye tunda. Mruko wa mvua na mikono yenye unyevu huisambaza."
+    },
+    "immediate_actions": {
+      "en": [
+        "Do not work the plants while they are wet.",
+        "Remove badly spotted leaves and fruit from the plot."
+      ],
+      "hi": [
+        "पौधे गीले हों तो उनमें काम न करें।",
+        "बहुत धब्बेदार पत्तियाँ और फल खेत से हटाएँ।"
+      ],
+      "sw": [
+        "Usifanye kazi kwenye mimea ikiwa na unyevu.",
+        "Ondoa majani na matunda yenye madoa mengi shambani."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "A copper spray only helps if extension says it fits your area. It does not cure spotted fruit.",
+        "Stake plants so the leaves are off the soil."
+      ],
+      "hi": [
+        "ताँबे का छिड़काव तभी जब कृषि विभाग कहे कि यह आपके इलाके के लिए ठीक है। धब्बेदार फल ठीक नहीं होते।",
+        "पौधों को सहारा दें ताकि पत्तियाँ मिट्टी से ऊपर रहें।"
+      ],
+      "sw": [
+        "Dawa ya shaba inasaidia tu ugani ikisema inafaa eneo lako. Haiponyi tunda lenye madoa.",
+        "Tegea mimea ili majani yasiwe ardhini."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Next season, use seed from healthy plants or certified seed.",
+        "Rotate away from tomato and pepper."
+      ],
+      "hi": [
+        "अगले मौसम स्वस्थ पौधों का बीज या प्रमाणित बीज लें।",
+        "टमाटर और मिर्च से हटकर फसल लगाएँ।"
+      ],
+      "sw": [
+        "Msimu ujao, tumia mbegu kutoka mimea yenye afya au mbegu iliyoidhinishwa.",
+        "Badilisha mazao mbali na nyanya na pilipili."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if spots cover the young leaves or the fruit is unsaleable.",
+      "hi": "अगर नई पत्तियाँ धब्बों से भर जाएँ या फल बिकने लायक न रहे तो मदद लें।",
+      "sw": "Omba msaada madoa yakifunika majani machanga au tunda likikosa soko."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop, follow the label rate, keep it out of drinking water, and wait the days on the label before harvest.",
+      "hi": "छिड़काव करें तो इसी फसल के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, पीने के पानी से दूर रखें, और तुड़ाई से पहले डिब्बे पर लिखे दिन रुकें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili, fuata kiwango cha lebo, usiingize dawa kwenye maji ya kunywa, na usubiri siku za lebo kabla ya kuvuna."
+    }
+  },
+  "tomato_early_blight": {
+    "summary": {
+      "en": "Tomato early blight starts low on the plant as brown target rings. It moves up when the lower leaves stay wet.",
+      "hi": "टमाटर का अगेती झुलसा पौधे के निचले हिस्से में भूरे निशाने जैसे छल्लों से शुरू होता है। नीचे की पत्तियाँ गीली रहें तो यह ऊपर चढ़ता है।",
+      "sw": "Baka la mapema la nyanya huanza chini ya mmea kama pete za kahawia. Hupanda juu majani ya chini yanapobaki na unyevu."
+    },
+    "immediate_actions": {
+      "en": [
+        "Remove the spotted lower leaves and take them out of the plot.",
+        "Mulch so soil does not splash onto the leaves."
+      ],
+      "hi": [
+        "धब्बेदार नीचे की पत्तियाँ हटाकर खेत से बाहर ले जाएँ।",
+        "मल्च बिछाएँ ताकि मिट्टी पत्तियों पर न उछले।"
+      ],
+      "sw": [
+        "Ondoa majani ya chini yenye madoa na uyatoe shambani.",
+        "Weka matandazo ili udongo usiruke kwenye majani."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Stake or tie the plants and water at the base in the morning.",
+        "Ask extension before a fungicide, and only while the fruit is still worth protecting."
+      ],
+      "hi": [
+        "पौधों को बाँधें और सुबह जड़ के पास पानी दें।",
+        "कवकनाशी से पहले कृषि विभाग से पूछें, और तभी जब फल अभी बचाने लायक हो।"
+      ],
+      "sw": [
+        "Funga mimea na umwagilie shina asubuhi.",
+        "Uliza ugani kabla ya dawa ya kuvu, na tu wakati tunda bado linafaa kulindwa."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Rotate away from tomato and potato next season.",
+        "Do not save seed from badly blighted plants."
+      ],
+      "hi": [
+        "अगले मौसम टमाटर और आलू से हटकर फसल लगाएँ।",
+        "बहुत झुलसे पौधों से बीज न रखें।"
+      ],
+      "sw": [
+        "Msimu ujao badilisha mazao mbali na nyanya na viazi.",
+        "Usitunze mbegu kutoka mimea iliyoathirika vibaya."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if the rings reach the top of the plant or the stems are girdled.",
+      "hi": "अगर छल्ले पौधे के ऊपर तक पहुँच जाएँ या तना घेर लिया जाए तो मदद लें।",
+      "sw": "Omba msaada pete zikifika juu ya mmea au shina likizungukwa."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop, follow the label rate, keep it out of drinking water, and wait the days on the label before harvest.",
+      "hi": "छिड़काव करें तो इसी फसल के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, पीने के पानी से दूर रखें, और तुड़ाई से पहले डिब्बे पर लिखे दिन रुकें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili, fuata kiwango cha lebo, usiingize dawa kwenye maji ya kunywa, na usubiri siku za lebo kabla ya kuvuna."
+    }
+  },
+  "tomato_late_blight": {
+    "summary": {
+      "en": "Tomato late blight collapses plants in cool wet weather and spreads to potato. Greasy dark lesions are the sign.",
+      "hi": "टमाटर का पछेती झुलसा ठंडे गीले मौसम में पौधों को गिरा देता है और आलू तक फैलता है। चिकने गहरे धब्बे निशानी हैं।",
+      "sw": "Baka la marehemu la nyanya huangusha mimea katika baridi yenye unyevu na huenea hadi viazi. Vidonda vyeusi vinavyong'aa ndio ishara."
+    },
+    "immediate_actions": {
+      "en": [
+        "Pull out plants that are collapsing and bag or bury them away from the crop.",
+        "Warn anyone growing potato or tomato nearby."
+      ],
+      "hi": [
+        "गिरते पौधे उखाड़ें और उन्हें फसल से दूर दबाएँ या थैले में डालें।",
+        "पास में आलू या टमाटर उगाने वालों को बताएँ।"
+      ],
+      "sw": [
+        "Ng'oa mimea inayoanguka na uizike au uifunge mbali na zao.",
+        "Onya mtu yeyote anayelima viazi au nyanya karibu."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Do not compost the haulms and do not save seed from this fruit.",
+        "Ask extension the same day. A registered product has to go on before the whole row collapses."
+      ],
+      "hi": [
+        "तने खाद में न डालें और इस फल का बीज न रखें।",
+        "उसी दिन कृषि विभाग से पूछें। दर्ज दवा पूरी कतार गिरने से पहले लगानी होती है।"
+      ],
+      "sw": [
+        "Usitumbukize shina kwenye mbolea wala usitunze mbegu ya tunda hili.",
+        "Uliza ugani siku hiyo hiyo. Dawa iliyosajiliwa inahitajika kabla mstari mzima haujaanguka."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Next time, give the plants more air and avoid wetting the leaves.",
+        "Do not follow tomato with potato in the same bed."
+      ],
+      "hi": [
+        "अगली बार पौधों को ज़्यादा हवा दें और पत्तियाँ न भिगोएँ।",
+        "उसी क्यारी में टमाटर के बाद आलू न लगाएँ।"
+      ],
+      "sw": [
+        "Wakati mwingine, wape mimea upepo zaidi na usiloweshe majani.",
+        "Usifuate nyanya na viazi kwenye kitanda kile kile."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help the day you see late blight. It can take the row within a week of wet weather.",
+      "hi": "पछेती झुलसा जिस दिन दिखे उसी दिन मदद लें। गीले मौसम में यह एक हफ्ते में कतार ले सकता है।",
+      "sw": "Omba msaada siku unayoona baka la marehemu. Linaweza kuchukua mstari ndani ya wiki ya mvua."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop, follow the label rate, keep it out of drinking water, and wait the days on the label before harvest.",
+      "hi": "छिड़काव करें तो इसी फसल के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, पीने के पानी से दूर रखें, और तुड़ाई से पहले डिब्बे पर लिखे दिन रुकें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili, fuata kiwango cha lebo, usiingize dawa kwenye maji ya kunywa, na usubiri siku za lebo kabla ya kuvuna."
+    }
+  },
+  "tomato_leaf_mold": {
+    "summary": {
+      "en": "Tomato leaf mold shows yellow patches on top and olive mold underneath. It builds up when air is still and humid.",
+      "hi": "टमाटर की पत्ती फफूँदी ऊपर पीले धब्बे और नीचे जैतूनी फफूँद दिखाती है। हवा रुकी और नम हो तो यह बढ़ती है।",
+      "sw": "Kuvu ya jani la nyanya huonyesha mabaka ya manjano juu na kuvu ya kijani chini. Huongezeka hewa ikisimama na kuwa na unyevu."
+    },
+    "immediate_actions": {
+      "en": [
+        "Open the tunnel or thin the canopy so air moves.",
+        "Remove the moldy lower leaves and take them out."
+      ],
+      "hi": [
+        "सुरंग खोलें या छत्र पतला करें ताकि हवा चले।",
+        "फफूँदी वाली नीचे की पत्तियाँ हटाकर बाहर ले जाएँ।"
+      ],
+      "sw": [
+        "Fungua handaki au punguza taji ili upepo upite.",
+        "Ondoa majani ya chini yenye kuvu na uyatoe nje."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Water early at the base, not over the leaves in the evening.",
+        "Ask extension if a registered fungicide is needed in a closed house."
+      ],
+      "hi": [
+        "शाम को पत्तियों पर नहीं, सुबह जड़ के पास पानी दें।",
+        "बंद घर में दर्ज कवकनाशी चाहिए या नहीं, कृषि विभाग से पूछें।"
+      ],
+      "sw": [
+        "Mwagilia asubuhi kwenye shina, si juu ya majani jioni.",
+        "Uliza ugani kama dawa ya kuvu iliyosajiliwa inahitajika ndani ya nyumba iliyofungwa."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Space the next planting wider and ventilate every humid morning.",
+        "Clear crop residues at the end of the season."
+      ],
+      "hi": [
+        "अगली रोपाई में दूरी बढ़ाएँ और हर नम सुबह हवा आने दें।",
+        "मौसम के अंत में फसल अवशेष साफ करें।"
+      ],
+      "sw": [
+        "Panda ijayo kwa nafasi kubwa na fungua hewa kila asubuhi yenye unyevu.",
+        "Ondoa mabaki ya zao mwishoni mwa msimu."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if mold covers the upper leaves or the fruit is failing to size.",
+      "hi": "अगर ऊपर की पत्तियों पर फफूँद चढ़ जाए या फल आकार न पकड़ें तो मदद लें।",
+      "sw": "Omba msaada kuvu ikifunika majani ya juu au tunda likishindwa kukua."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop, follow the label rate, keep it out of drinking water, and wait the days on the label before harvest.",
+      "hi": "छिड़काव करें तो इसी फसल के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, पीने के पानी से दूर रखें, और तुड़ाई से पहले डिब्बे पर लिखे दिन रुकें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili, fuata kiwango cha lebo, usiingize dawa kwenye maji ya kunywa, na usubiri siku za lebo kabla ya kuvuna."
+    }
+  },
+  "tomato_septoria_leaf_spot": {
+    "summary": {
+      "en": "Septoria leaf spot starts low, as many small round spots with gray centers. The leaves yellow and drop.",
+      "hi": "सेप्टोरिया पत्ती धब्बा नीचे से शुरू होता है, बीच में धूसर रंग वाले कई छोटे गोल धब्बे। पत्तियाँ पीली होकर झड़ती हैं।",
+      "sw": "Doa la septoria huanza chini, kama madoa madogo duara yenye katikati ya kijivu. Majani huwa manjano na kuanguka."
+    },
+    "immediate_actions": {
+      "en": [
+        "Strip the worst lower leaves and remove them from the bed.",
+        "Mulch to stop soil splash."
+      ],
+      "hi": [
+        "सबसे खराब नीचे की पत्तियाँ तोड़कर क्यारी से हटाएँ।",
+        "मिट्टी के छींटे रोकने के लिए मल्च बिछाएँ।"
+      ],
+      "sw": [
+        "Ondoa majani ya chini yaliyo mabaya na uyatoe kitandani.",
+        "Weka matandazo kuzuia mruko wa udongo."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Stake the plants and keep the foliage dry.",
+        "Ask extension before spraying. A fungicide does not bring back dropped leaves."
+      ],
+      "hi": [
+        "पौधों को सहारा दें और पत्तियाँ सूखी रखें।",
+        "छिड़काव से पहले कृषि विभाग से पूछें। कवकनाशी झड़ी पत्तियाँ वापस नहीं लाती।"
+      ],
+      "sw": [
+        "Tegea mimea na uache majani yakae makavu.",
+        "Uliza ugani kabla ya kunyunyizia. Dawa ya kuvu hairudishi majani yaliyoanguka."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Rotate off tomato for a season and clear residues.",
+        "Do not work among wet plants."
+      ],
+      "hi": [
+        "एक मौसम टमाटर न लगाएँ और अवशेष साफ करें।",
+        "गीले पौधों के बीच काम न करें।"
+      ],
+      "sw": [
+        "Acha nyanya kwa msimu mmoja na ondoa mabaki.",
+        "Usifanye kazi kati ya mimea yenye unyevu."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if leaves are dropping up the plant while fruit is still green.",
+      "hi": "अगर फल अभी हरा हो और पत्तियाँ ऊपर तक झड़ने लगें तो मदद लें।",
+      "sw": "Omba msaada majani yakianza kuanguka juu na tunda bado kijani."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop, follow the label rate, keep it out of drinking water, and wait the days on the label before harvest.",
+      "hi": "छिड़काव करें तो इसी फसल के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, पीने के पानी से दूर रखें, और तुड़ाई से पहले डिब्बे पर लिखे दिन रुकें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili, fuata kiwango cha lebo, usiingize dawa kwenye maji ya kunywa, na usubiri siku za lebo kabla ya kuvuna."
+    }
+  },
+  "tomato_spider_mite": {
+    "summary": {
+      "en": "Two-spotted spider mites speckle tomato leaves and leave fine webbing underneath. They increase in hot dry weather.",
+      "hi": "दो-धब्बे वाली मकड़ी टमाटर की पत्तियों पर बारीक धब्बे और नीचे जाला छोड़ती है। गर्म सूखे मौसम में ये बढ़ती हैं।",
+      "sw": "Utitiri wa nyanya hufanya madoa madogo kwenye majani na utando mwembamba chini. Huongezeka wakati wa joto na ukame."
+    },
+    "immediate_actions": {
+      "en": [
+        "Check the undersides for moving mites and webbing.",
+        "Wash the leaves with water, aiming under the leaf, and repeat."
+      ],
+      "hi": [
+        "पत्तियों के नीचे चलते कीट और जाला देखें।",
+        "पत्ती के नीचे पानी की धार दें, और दोहराएँ।"
+      ],
+      "sw": [
+        "Kagua chini ya majani kwa utitiri unaotembea na utando.",
+        "Osha majani kwa maji, ukilenga chini ya jani, na urudie."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Remove leaves that are already bronze and webbed.",
+        "Ask extension for a miticide registered for tomato if the webbing keeps spreading. A broad insecticide often makes mites worse."
+      ],
+      "hi": [
+        "जो पत्तियाँ ताँबे जैसी और जाले से भरी हों उन्हें हटाएँ।",
+        "जाला फैलता रहे तो टमाटर के लिए दर्ज मकड़ीनाशी कृषि विभाग से पूछें। चौड़ी कीटनाशक अक्सर मकड़ी बढ़ा देती है।"
+      ],
+      "sw": [
+        "Ondoa majani ambayo tayari yana rangi ya shaba na utando.",
+        "Uliza ugani dawa ya utitiri iliyosajiliwa kwa nyanya utando ukiendelea. Dawa ya wadudu ya wigo mpana mara nyingi huzidisha utitiri."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Do not let the crop go dusty and drought-stressed.",
+        "Leave predatory mites and other beneficial insects alive."
+      ],
+      "hi": [
+        "फसल को धूल और सूखे के तनाव में न छोड़ें।",
+        "शिकारी मकड़ियों और दूसरे उपयोगी कीड़ों को जीवित छोड़ें।"
+      ],
+      "sw": [
+        "Usiliache zao kuwa na vumbi na shida ya ukame.",
+        "Waache utitiri wawindaji na wadudu wengine wenye manufaa hai."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help when leaves bronze across the row, not just on one plant.",
+      "hi": "जब एक पौधे पर नहीं, पूरी कतार की पत्तियाँ ताँबे जैसी हों तो मदद लें।",
+      "sw": "Omba msaada majani yanapopata rangi ya shaba kwenye mstari mzima, si mmea mmoja."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop and this pest, follow the label rate, and do not spray while bees are on the flowers.",
+      "hi": "छिड़काव करें तो इसी फसल और इसी कीट के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, और जब मधुमक्खियाँ फूलों पर हों तब न छिड़कें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili na mdudu huyu, fuata kiwango cha lebo, wala usinyunyizie nyuki wanapokuwa kwenye maua."
+    }
+  },
+  "tomato_target_spot": {
+    "summary": {
+      "en": "Tomato target spot makes round brown lesions with rings on leaves, stems, and sometimes fruit.",
+      "hi": "टमाटर का टारगेट धब्बा पत्तियों, तनों और कभी फल पर छल्लों वाले गोल भूरे धब्बे बनाता है।",
+      "sw": "Doa lengwa la nyanya hufanya vidonda duara vya kahawia vyenye pete kwenye majani, shina, na wakati mwingine tunda."
+    },
+    "immediate_actions": {
+      "en": [
+        "Remove spotted leaves and any spotted fruit you will not eat soon.",
+        "Keep the soil from splashing up."
+      ],
+      "hi": [
+        "धब्बेदार पत्तियाँ और वह धब्बेदार फल हटाएँ जिसे जल्दी नहीं खाना।",
+        "मिट्टी को ऊपर उछलने न दें।"
+      ],
+      "sw": [
+        "Ondoa majani yenye madoa na tunda lenye madoa usilokula hivi karibuni.",
+        "Zuia udongo usiruke juu."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Stake plants and water at the base.",
+        "Ask extension before a fungicide registered for tomato."
+      ],
+      "hi": [
+        "पौधों को सहारा दें और जड़ के पास पानी दें।",
+        "टमाटर के लिए दर्ज कवकनाशी से पहले कृषि विभाग से पूछें।"
+      ],
+      "sw": [
+        "Tegea mimea na umwagilie shina.",
+        "Uliza ugani kabla ya dawa ya kuvu iliyosajiliwa kwa nyanya."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Clear residues and rotate away from tomato next season.",
+        "Give the rows enough space to dry."
+      ],
+      "hi": [
+        "अवशेष साफ करें और अगले मौसम टमाटर से हटकर फसल लगाएँ।",
+        "कतारों को सूखने की जगह दें।"
+      ],
+      "sw": [
+        "Ondoa mabaki na badilisha mazao mbali na nyanya msimu ujao.",
+        "Wape mistari nafasi ya kukauka."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if lesions run onto the fruit throughout the row.",
+      "hi": "अगर पूरी कतार के फलों पर धब्बे चढ़ जाएँ तो मदद लें।",
+      "sw": "Omba msaada vidonda vikifika kwenye matunda katika mstari mzima."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop, follow the label rate, keep it out of drinking water, and wait the days on the label before harvest.",
+      "hi": "छिड़काव करें तो इसी फसल के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, पीने के पानी से दूर रखें, और तुड़ाई से पहले डिब्बे पर लिखे दिन रुकें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili, fuata kiwango cha lebo, usiingize dawa kwenye maji ya kunywa, na usubiri siku za lebo kabla ya kuvuna."
+    }
+  },
+  "tomato_yellow_leaf_curl": {
+    "summary": {
+      "en": "Tomato yellow leaf curl is a virus carried by whiteflies. Leaves curl upward and the plant stays small.",
+      "hi": "टमाटर का पीला पत्ती मरोड़ एक वायरस है जिसे सफेद मक्खी ले जाती है। पत्तियाँ ऊपर की ओर मुड़ती हैं और पौधा छोटा रह जाता है।",
+      "sw": "Mkunjo wa manjano wa jani la nyanya ni virusi unaobebwa na nzi weupe. Majani hujikunja juu na mmea hubaki mdogo."
+    },
+    "immediate_actions": {
+      "en": [
+        "Pull out curled plants early so whiteflies have fewer sources.",
+        "Hang a yellow sticky trap and check it every few days."
+      ],
+      "hi": [
+        "मुड़े पौधे जल्दी उखाड़ें ताकि सफेद मक्खी को कम स्रोत मिलें।",
+        "पीला चिपचिपा जाल टाँगें और हर कुछ दिन देखें।"
+      ],
+      "sw": [
+        "Ng'oa mimea iliyojikunja mapema ili nzi weupe wapate vyanzo vichache.",
+        "Tundika mtego wa manjano unaonata na ukague kila baada ya siku chache."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Take rogued plants off the field. Spraying the leaf does not remove the virus.",
+        "Weed the borders. Whiteflies sit on many weeds."
+      ],
+      "hi": [
+        "निकाले पौधे खेत से बाहर ले जाएँ। पत्ती पर छिड़काव वायरस नहीं हटाता।",
+        "किनारों की निराई करें। सफेद मक्खी कई खरपतवारों पर बैठती है।"
+      ],
+      "sw": [
+        "Toa mimea iliyong'olewa shambani. Kunyunyizia jani hakuondoi virusi.",
+        "Palilia mipaka. Nzi weupe hukaa kwenye magugu mengi."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Next time, ask for a curl-tolerant variety and a seedling bed with a net if you have one.",
+        "Do not keep a ratoon or an old curled plant beside the new crop."
+      ],
+      "hi": [
+        "अगली बार मरोड़ सहने वाली किस्म माँगें, और जाल हो तो नर्सरी पर लगाएँ।",
+        "नई फसल के पास पुराना मुड़ा पौधा या ठूँठ न रखें।"
+      ],
+      "sw": [
+        "Wakati mwingine, omba aina inayostahimili mkunjo na kitanda cha miche chenye wavu ukiwa nao.",
+        "Usiache mmea mzee uliojikunja karibu na zao jipya."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if whiteflies cloud up when you walk the row or most plants are curled.",
+      "hi": "अगर कतार में चलने पर सफेद मक्खी बादल सी उठे या ज़्यादातर पौधे मुड़ जाएँ तो मदद लें।",
+      "sw": "Omba msaada nzi weupe wanapopaa kama wingu unapotembea mstari, au mimea mingi ikijikunja."
+    },
+    "caution": {
+      "en": "A spray does not remove this virus. Pull out sick plants, and wash your hands and tools before you touch healthy ones.",
+      "hi": "छिड़काव इस वायरस को नहीं मिटाता। बीमार पौधे उखाड़ें, और स्वस्थ पौधे छूने से पहले हाथ और औजार धोएँ।",
+      "sw": "Dawa haiondoi virusi hivi. Ng'oa mimea mbaya, na osha mikono na vifaa kabla ya kugusa mimea yenye afya."
+    }
+  },
+  "tomato_mosaic_virus": {
+    "summary": {
+      "en": "Tomato mosaic virus mottles and narrows the leaves. It spreads on hands, tools, and tobacco, and it stays in seed.",
+      "hi": "टमाटर मोजेक वायरस पत्तियों को चितकबरा और संकरा करता है। यह हाथ, औजार और तंबाकू से फैलता है, और बीज में बना रहता है।",
+      "sw": "Virusi vya mosaic ya nyanya hufanya majani kuwa na mabaka na kupungua. Huenea kwa mikono, vifaa, na tumbaku, na hubaki kwenye mbegu."
+    },
+    "immediate_actions": {
+      "en": [
+        "Pull out mottled plants and wash your hands before the next plant.",
+        "Do not smoke or handle tobacco in the tomato crop."
+      ],
+      "hi": [
+        "चितकबरे पौधे उखाड़ें और अगला पौधा छूने से पहले हाथ धोएँ।",
+        "टमाटर की फसल में तंबाकू न छुएँ और न पीएँ।"
+      ],
+      "sw": [
+        "Ng'oa mimea yenye mabaka na osha mikono kabla ya mmea unaofuata.",
+        "Usivute wala kushika tumbaku ndani ya zao la nyanya."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Dip knives in soapy water between plants.",
+        "Do not save seed from mottled plants."
+      ],
+      "hi": [
+        "पौधों के बीच चाकू साबुन के पानी में डुबोएँ।",
+        "चितकबरे पौधों से बीज न रखें।"
+      ],
+      "sw": [
+        "Chovya visu kwenye maji ya sabuni kati ya mimea.",
+        "Usitunze mbegu kutoka mimea yenye mabaka."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Buy or save seed only from healthy fruit.",
+        "Clear the old crop completely before the next planting."
+      ],
+      "hi": [
+        "बीज स्वस्थ फल से ही खरीदें या रखें।",
+        "अगली रोपाई से पहले पुरानी फसल पूरी तरह हटाएँ।"
+      ],
+      "sw": [
+        "Nunua au tunza mbegu kutoka tunda lenye afya pekee.",
+        "Ondoa zao la zamani kabisa kabla ya upandaji ujao."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if new growth is shoestring-thin across many plants.",
+      "hi": "अगर कई पौधों की नई बढ़त धागे जैसी पतली हो जाए तो मदद लें।",
+      "sw": "Omba msaada ukuaji mpya ukiwa mwembamba kama uzi kwenye mimea mingi."
+    },
+    "caution": {
+      "en": "A spray does not remove this virus. Pull out sick plants, and wash your hands and tools before you touch healthy ones.",
+      "hi": "छिड़काव इस वायरस को नहीं मिटाता। बीमार पौधे उखाड़ें, और स्वस्थ पौधे छूने से पहले हाथ और औजार धोएँ।",
+      "sw": "Dawa haiondoi virusi hivi. Ng'oa mimea mbaya, na osha mikono na vifaa kabla ya kugusa mimea yenye afya."
+    }
+  },
+  "tomato_healthy": {
+    "summary": {
+      "en": "This tomato plant looks healthy. Keep checking the field.",
+      "hi": "यह टमाटर का पौधा स्वस्थ दिखता है। खेत को देखते रहें।",
+      "sw": "Mmea huu wa nyanya unaonekana kuwa na afya. Endelea kukagua shamba."
+    },
+    "immediate_actions": {
+      "en": [
+        "Look again in a few days, including the undersides of the leaves.",
+        "Note what you saw so the next photo has something to compare with."
+      ],
+      "hi": [
+        "कुछ दिन बाद फिर देखें, पत्तियों का निचला हिस्सा भी।",
+        "जो देखा वह लिख रखें, ताकि अगली तस्वीर से मिला सकें।"
+      ],
+      "sw": [
+        "Angalia tena baada ya siku chache, pamoja na sehemu ya chini ya majani.",
+        "Andika ulichoona ili uweze kulinganisha na picha inayofuata."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "No treatment is needed while the plants stay like this.",
+        "Leave the insects that eat pests alone."
+      ],
+      "hi": [
+        "जब तक पौधे ऐसे रहें, इलाज की ज़रूरत नहीं।",
+        "जो कीड़े कीट खाते हैं, उन्हें न मारें।"
+      ],
+      "sw": [
+        "Hakuna tiba inayohitajika wakati mimea inabaki hivi.",
+        "Waache wadudu wanaokula wadudu waharibifu."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Use clean seed or planting material and do not crowd the rows.",
+        "Water the soil rather than the leaves."
+      ],
+      "hi": [
+        "साफ बीज या रोपण सामग्री लें और कतारें घनी न रखें।",
+        "पत्तियों पर नहीं, मिट्टी पर पानी दें।"
+      ],
+      "sw": [
+        "Tumia mbegu au miche safi, wala usisongeze mistari.",
+        "Mwagilia udongo, si majani."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if spots, wilt, or insects spread beyond a few plants.",
+      "hi": "अगर धब्बे, मुरझाना या कीट कुछ पौधों से आगे बढ़ें तो मदद लें।",
+      "sw": "Omba msaada madoa, kunyauka, au wadudu vikipita mimea michache."
+    },
+    "caution": {
+      "en": "Do not spray a healthy crop just in case. A needless spray costs money and kills insects that eat pests.",
+      "hi": "स्वस्थ फसल पर यों ही छिड़काव न करें। फालतू छिड़काव पैसा गँवाता है और उन कीड़ों को मारता है जो कीट खाते हैं।",
+      "sw": "Usinyunyizie zao lenye afya bila sababu. Dawa isiyo na haja inapoteza pesa na inaua wadudu wanaokula wadudu waharibifu."
+    }
+  },
+  "pest_aphids": {
+    "summary": {
+      "en": "Aphids cluster on tender tips and under leaves. Curled leaves and sticky honeydew are the signs.",
+      "hi": "माहू कोमल सिरों और पत्तियों के नीचे झुंड में बैठते हैं। मुड़ी पत्तियाँ और चिपचिपा मधु-रस निशानी हैं।",
+      "sw": "Vidukari hukusanyika kwenye vichipukizi na chini ya majani. Majani yaliyojikunja na utomvu unaonata ndio ishara."
+    },
+    "immediate_actions": {
+      "en": [
+        "Wash colonies off with water, or squash them if there are only a few.",
+        "Check for ants. They protect aphids."
+      ],
+      "hi": [
+        "झुंड को पानी से धोएँ, या कम हों तो मसल दें।",
+        "चींटियाँ देखें। वे माहू की रखवाली करती हैं।"
+      ],
+      "sw": [
+        "Osha makundi kwa maji, au uyasage ikiwa ni machache.",
+        "Angalia sisimizi. Hulinda vidukari."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Remove the worst curled tips.",
+        "A soap spray, if you use one, goes on in the cool part of the day and not on wilted plants. Ask extension for a registered product."
+      ],
+      "hi": [
+        "सबसे मुड़े सिरे हटा दें।",
+        "साबुन का छिड़काव करें तो दिन के ठंडे समय में, मुरझाए पौधों पर नहीं। दर्ज दवा कृषि विभाग से पूछें।"
+      ],
+      "sw": [
+        "Ondoa vichipukizi vilivyojikunja zaidi.",
+        "Dawa ya sabuni, ukiitumia, inywe wakati wa baridi wa siku, si kwenye mimea iliyonyauka. Uliza ugani dawa iliyosajiliwa."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Leave ladybird beetles and lacewings. They eat aphids.",
+        "Do not overfeed with nitrogen, which makes soft growth aphids like."
+      ],
+      "hi": [
+        "लेडीबर्ड और लेसविंग को छोड़ दें। वे माहू खाते हैं।",
+        "नाइट्रोजन की अधिक खाद न दें, उससे कोमल बढ़त होती है जिसे माहू पसंद करते हैं।"
+      ],
+      "sw": [
+        "Waache kunguni-kibibi na lacewing. Hula vidukari.",
+        "Usizidishe nitrojeni, hufanya ukuaji laini unaopendwa na vidukari."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if plants stop growing or black sooty mold covers the leaves.",
+      "hi": "अगर पौधे बढ़ना रुक जाएँ या काली सूटी फफूँद पत्तियाँ ढक ले तो मदद लें।",
+      "sw": "Omba msaada mimea ikiacha kukua au kuvu nyeusi ikifunika majani."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop and this pest, follow the label rate, and do not spray while bees are on the flowers.",
+      "hi": "छिड़काव करें तो इसी फसल और इसी कीट के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, और जब मधुमक्खियाँ फूलों पर हों तब न छिड़कें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili na mdudu huyu, fuata kiwango cha lebo, wala usinyunyizie nyuki wanapokuwa kwenye maua."
+    }
+  },
+  "pest_fall_armyworm": {
+    "summary": {
+      "en": "Fall armyworm feeds in the maize whorl. Fresh sawdust-like frass and windowed leaves are the signs.",
+      "hi": "फॉल आर्मीवर्म मक्का के गोभ में खाता है। ताज़ा बुरादे जैसा मल और खिड़की जैसी पत्तियाँ निशानी हैं।",
+      "sw": "Funza wa jeshi hula ndani ya kilele cha mahindi. Mabaki mapya kama vumbi la mbao na majani yaliyotobolewa kama dirisha ndio ishara."
+    },
+    "immediate_actions": {
+      "en": [
+        "Open the whorl and look for the larva and fresh frass.",
+        "Crush egg masses and young larvae by hand while plants are small."
+      ],
+      "hi": [
+        "गोभ खोलकर इल्ली और ताज़ा मल देखें।",
+        "पौधे छोटे हों तो अंडों के समूह और छोटी इल्लियाँ हाथ से मसलें।"
+      ],
+      "sw": [
+        "Fungua kilele na utafute funza na mabaki mapya.",
+        "Saga makundi ya mayai na funza wadogo kwa mkono mimea ikiwa midogo."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "A spray has to reach inside the whorl, and only while the larvae are small. Ask extension before treating a large field.",
+        "Do not spray a closed canopy on a calendar. It misses the larvae and kills their enemies."
+      ],
+      "hi": [
+        "छिड़काव गोभ के अंदर पहुँचना चाहिए, और तभी जब इल्लियाँ छोटी हों। बड़े खेत से पहले कृषि विभाग से पूछें।",
+        "बंद छत्र पर तारीख देखकर छिड़काव न करें। इल्ली बच जाती है और उसके दुश्मन मरते हैं।"
+      ],
+      "sw": [
+        "Dawa lazima ifike ndani ya kilele, na tu funza wakiwa wadogo. Uliza ugani kabla ya kutibu shamba kubwa.",
+        "Usinyunyizie taji iliyofunga kwa kalenda. Hukosa funza na kuua maadui zao."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Scout twice a week from emergence until tasseling.",
+        "Where extension supplies the seed, a push-pull intercrop lowers fall armyworm."
+      ],
+      "hi": [
+        "अंकुरण से मूँज तक हफ्ते में दो बार निरीक्षण करें।",
+        "जहाँ कृषि विभाग बीज दे, पुश-पुल मिश्र फसल फॉल आर्मीवर्म घटाती है।"
+      ],
+      "sw": [
+        "Kagua mara mbili kwa wiki kutoka kuota hadi kuchanua.",
+        "Ambapo ugani hutoa mbegu, mchanganyiko wa push-pull hupunguza funza wa jeshi."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help when many whorls have frass or the growing point is destroyed.",
+      "hi": "जब कई गोभ में मल हो या बढ़ने वाला सिरा नष्ट हो जाए तो मदद लें।",
+      "sw": "Omba msaada vilele vingi vikiwa na mabaki au ncha ya kukua ikiharibika."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop and this pest, follow the label rate, and do not spray while bees are on the flowers.",
+      "hi": "छिड़काव करें तो इसी फसल और इसी कीट के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, और जब मधुमक्खियाँ फूलों पर हों तब न छिड़कें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili na mdudu huyu, fuata kiwango cha lebo, wala usinyunyizie nyuki wanapokuwa kwenye maua."
+    }
+  },
+  "pest_whitefly": {
+    "summary": {
+      "en": "Whiteflies sit under the leaf and fly up in a cloud when disturbed. They spread several crop viruses.",
+      "hi": "सफेद मक्खी पत्ती के नीचे बैठती है और छेड़ने पर बादल की तरह उड़ती है। यह कई फसल वायरस फैलाती है।",
+      "sw": "Nzi weupe hukaa chini ya jani na kuruka kama wingu wanaposumbuliwa. Husambaza virusi kadhaa vya mazao."
+    },
+    "immediate_actions": {
+      "en": [
+        "Tap a leaf over a white page. Tiny white insects that fly are whiteflies.",
+        "Rogue plants that already show virus curl or mosaic."
+      ],
+      "hi": [
+        "एक सफेद कागज़ के ऊपर पत्ती झटकें। जो छोटे सफेद कीट उड़ें वे सफेद मक्खी हैं।",
+        "जिन पौधों पर वायरस का मरोड़ या मोजेक दिखे उन्हें निकालें।"
+      ],
+      "sw": [
+        "Piga jani juu ya karatasi nyeupe. Wadudu wadogo weupe wanaoruka ni nzi weupe.",
+        "Ng'oa mimea ambayo tayari ina mkunjo wa virusi au mosaic."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Use yellow sticky traps to see whether the population is rising.",
+        "Do not spray a broad insecticide on a schedule. It kills the wasps that eat whiteflies. Ask extension if a registered product is justified."
+      ],
+      "hi": [
+        "संख्या बढ़ रही है या नहीं, यह देखने के लिए पीले चिपचिपे जाल लगाएँ।",
+        "तारीख देखकर चौड़ी कीटनाशक न छिड़कें। यह उन ततैयों को मारती है जो सफेद मक्खी खाते हैं। दर्ज दवा ज़रूरी है या नहीं, कृषि विभाग से पूछें।"
+      ],
+      "sw": [
+        "Tumia mitego ya manjano inayonata kuona kama idadi inapanda.",
+        "Usinyunyizie dawa ya wigo mpana kwa kalenda. Inaua nyigu wanaokula nzi weupe. Uliza ugani kama dawa iliyosajiliwa inafaa."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "Weed the field and the borders.",
+        "Start with clean seedlings. Old infected plants beside the seedbed keep the cycle going."
+      ],
+      "hi": [
+        "खेत और किनारे की निराई करें।",
+        "साफ पौध से शुरू करें। क्यारी के पास पुराने संक्रमित पौधे चक्र जारी रखते हैं।"
+      ],
+      "sw": [
+        "Palilia shamba na mipaka.",
+        "Anza na miche safi. Mimea ya zamani iliyoambukizwa karibu na kitanda huendeleza mzunguko."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help if a cloud of whiteflies rises as you walk, or virus symptoms are spreading.",
+      "hi": "अगर चलने पर सफेद मक्खी का बादल उठे, या वायरस के लक्षण फैलें तो मदद लें।",
+      "sw": "Omba msaada wingu la nzi weupe likipaa unapotembea, au dalili za virusi zikisambaa."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop and this pest, follow the label rate, and do not spray while bees are on the flowers.",
+      "hi": "छिड़काव करें तो इसी फसल और इसी कीट के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, और जब मधुमक्खियाँ फूलों पर हों तब न छिड़कें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili na mdudu huyu, fuata kiwango cha lebo, wala usinyunyizie nyuki wanapokuwa kwenye maua."
+    }
+  },
+  "pest_stem_borer": {
+    "summary": {
+      "en": "Stem borer eats inside the maize stalk. The center leaf dries and pulls out easily. That is deadheart.",
+      "hi": "तना छेदक मक्का के तने के अंदर खाता है। बीच की पत्ती सूखती है और आसानी से खिंच जाती है। इसे मृत गोभ कहते हैं।",
+      "sw": "Funza wa shina hula ndani ya shina la mahindi. Jani la katikati hukauka na kutoka kirahisi. Huo ni deadheart."
+    },
+    "immediate_actions": {
+      "en": [
+        "Pull the dry center leaf. If it comes out and the base is bored, the borer is inside.",
+        "On young plants, split the damaged stalk and crush the larva."
+      ],
+      "hi": [
+        "सूखी बीच की पत्ती खींचें। निकल आए और आधार कटा हो तो छेदक अंदर है।",
+        "युवा पौधों में क्षतिग्रस्त तना चीरकर इल्ली मसल दें।"
+      ],
+      "sw": [
+        "Vuta jani kavu la katikati. Likitoka na msingi ukiwa umetobolewa, funza yuko ndani.",
+        "Kwenye mimea michanga, pasua shina lililoharibika na usage funza."
+      ]
+    },
+    "treatment": {
+      "en": [
+        "Destroy the crushed stalks. Do not leave them in the field.",
+        "Ask extension before spraying. The larva is inside the plant, so a spray on the leaf surface often misses it."
+      ],
+      "hi": [
+        "कुचले तने नष्ट करें। खेत में न छोड़ें।",
+        "छिड़काव से पहले कृषि विभाग से पूछें। इल्ली पौधे के अंदर होती है, इसलिए पत्ती की सतह पर छिड़काव अक्सर चूक जाता है।"
+      ],
+      "sw": [
+        "Haribu shina zilizosagwa. Usiache shambani.",
+        "Uliza ugani kabla ya kunyunyizia. Funza yuko ndani ya mmea, kwa hiyo dawa juu ya jani mara nyingi humkosa."
+      ]
+    },
+    "prevention": {
+      "en": [
+        "After harvest, destroy stalks and stubble before the next season.",
+        "Where extension supplies the seed, push-pull with Desmodium in the row and a trap grass on the border lowers stem borer."
+      ],
+      "hi": [
+        "कटाई के बाद अगले मौसम से पहले तने और ठूँठ नष्ट करें।",
+        "जहाँ कृषि विभाग बीज दे, कतार में डेस्मोडियम और किनारे पर ट्रैप घास वाली पुश-पुल विधि तना छेदक घटाती है।"
+      ],
+      "sw": [
+        "Baada ya kuvuna, haribu shina na mabua kabla ya msimu ujao.",
+        "Ambapo ugani hutoa mbegu, push-pull na Desmodium kwenye mstari na nyasi ya mtego pembezoni hupunguza funza wa shina."
+      ]
+    },
+    "when_to_seek_help": {
+      "en": "Ask for help when deadhearts are scattered through the field, not only on the border.",
+      "hi": "जब मृत गोभ सिर्फ़ किनारे पर नहीं, पूरे खेत में बिखरे हों तो मदद लें।",
+      "sw": "Omba msaada deadheart zikitawanyika shambani, si pembezoni pekee."
+    },
+    "caution": {
+      "en": "If you spray, use a product registered for this crop and this pest, follow the label rate, and do not spray while bees are on the flowers.",
+      "hi": "छिड़काव करें तो इसी फसल और इसी कीट के लिए दर्ज दवा लें, डिब्बे की मात्रा मानें, और जब मधुमक्खियाँ फूलों पर हों तब न छिड़कें।",
+      "sw": "Ukinyunyizia, tumia dawa iliyosajiliwa kwa zao hili na mdudu huyu, fuata kiwango cha lebo, wala usinyunyizie nyuki wanapokuwa kwenye maua."
+    }
+  }
+}

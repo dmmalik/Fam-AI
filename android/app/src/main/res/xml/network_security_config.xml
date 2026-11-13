@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The field box has no certificate, and Android ignores domain rules for raw IP
+  addresses. Cleartext stays on so 127.0.0.1 and a hotspot address can be reached.
+  PiAddress rejects every host that is not loopback, .local, or a private range
+  before a socket is opened.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

@@ -1,0 +1,68 @@
+{
+  "indo_gangetic": {
+    "names": {
+      "en": "Indo-Gangetic plains",
+      "hi": "सिंधु-गंगा का मैदान",
+      "sw": "Tambarare za Indo-Gangetic"
+    },
+    "season": {
+      "en": "Summers are hot, the monsoon is wet, and winters are cool. Rabi and kharif crops both matter. Leaf blight and rust increase in cool wet spells, and fall armyworm shows up in kharif maize.",
+      "hi": "गर्मी तेज़ होती है, मानसून में पानी गिरता है, और सर्दी ठंडी होती है। रबी और खरीफ दोनों मायने रखते हैं। ठंडे गीले मौसम में झुलसा और रतुआ बढ़ते हैं, और खरीफ मक्का में फॉल आर्मीवर्म आता है।",
+      "sw": "Majira ya joto ni moto, msimu wa mvua ni unyevu, na baridi ni ya kupoa. Mazao ya rabi na kharif yote mawili ni muhimu. Mawio na kutu huongezeka wakati wa baridi yenye unyevu, na funza wa jeshi hutokea kwenye mahindi ya kharif."
+    },
+    "irrigation": {
+      "en": "Canal and tubewell water are common. Water the soil in the morning and keep the leaves dry.",
+      "hi": "नहर और नलकूप का पानी आम है। सुबह मिट्टी को पानी दें और पत्तियाँ सूखी रखें।",
+      "sw": "Maji ya mfereji na kisima ni ya kawaida. Mwagilia udongo asubuhi na uache majani yakae makavu."
+    },
+    "input_access": {
+      "en": "Dealers are usually in the nearby town. Ask for a product registered for this crop and read the rate on the label. If the shop is out, do the field work the same day instead of buying an unlabeled bottle.",
+      "hi": "दुकान अक्सर पास के कस्बे में होती है। इसी फसल के लिए दर्ज दवा माँगें और डिब्बे पर मात्रा पढ़ें। दुकान में न हो तो बिना नाम की शीशी खरीदने के बजाय उसी दिन खेत का काम करें।",
+      "sw": "Maduka huwa mjini karibu. Omba dawa iliyosajiliwa kwa zao hili na usome kiwango kwenye lebo. Duka likiisha, fanya kazi shambani siku hiyo badala ya kununua chupa isiyo na lebo."
+    }
+  },
+  "peninsular_india": {
+    "names": {
+      "en": "Peninsular India",
+      "hi": "प्रायद्वीपीय भारत",
+      "sw": "Bara Hindi la kusini"
+    },
+    "season": {
+      "en": "Most of the year is hot. Humidity jumps in the monsoon, and the rainy weeks are not the same in every district. Leaf spots build in those humid weeks. Whitefly is worse in warm dry spells.",
+      "hi": "साल का बड़ा हिस्सा गर्म रहता है। मानसून में नमी बढ़ती है, और बारिश के हफ्ते हर जिले में एक जैसे नहीं होते। उन्हीं नम हफ्तों में पत्तों पर धब्बे बढ़ते हैं। गर्म सूखे मौसम में सफेद मक्खी ज़्यादा होती है।",
+      "sw": "Mwaka mzima huwa na joto. Unyevu hupanda wakati wa masika, na wiki za mvua si sawa kila wilaya. Madoa ya majani huongezeka katika wiki hizo. Nzi weupe huzidi wakati wa joto na ukame."
+    },
+    "irrigation": {
+      "en": "Tanks, wells, and drip lines are common. Drip keeps leaves dry. If you use a furrow, do not splash soil onto the lower leaves.",
+      "hi": "तालाब, कुआँ और ड्रिप आम हैं। ड्रिप से पत्तियाँ सूखी रहती हैं। क्यारी से पानी दें तो नीचे की पत्तियों पर मिट्टी न उछालें।",
+      "sw": "Mabwawa, visima, na umwagiliaji wa drip ni vya kawaida. Drip huacha majani makavu. Ukitumia mfereji, usirushie udongo kwenye majani ya chini."
+    },
+    "input_access": {
+      "en": "Shops are in the market towns. Carry a leaf, not only the name of the problem. The KVK or extension office can name a registered product. Do not buy a loose unlabeled bottle.",
+      "hi": "दुकानें मंडी वाले कस्बे में हैं। सिर्फ़ नाम नहीं, एक पत्ता साथ ले जाएँ। केवीके या कृषि विभाग दर्ज दवा बता सकता है। बिना लेबल की खुली शीशी न खरीदें।",
+      "sw": "Maduka yako mijini sokoni. Beba jani, si jina la tatizo peke yake. Ofisi ya ugani inaweza kutaja dawa iliyosajiliwa. Usinunue chupa iliyofunguliwa bila lebo."
+    }
+  },
+  "east_african_highlands": {
+    "names": {
+      "en": "East African highlands",
+      "hi": "पूर्वी अफ्रीका की उच्च भूमि",
+      "sw": "Nyanda za juu za Afrika Mashariki"
+    },
+    "season": {
+      "en": "Much of the highlands has two rainy seasons and cool nights. Late blight, rust, and maize stem borers are common. Days can be warm while nights stay cold.",
+      "hi": "ऊँची भूमि के बड़े हिस्से में दो बारिश के मौसम और ठंडी रातें होती हैं। पछेता झुलसा, रतुआ और मक्का का तना छेदक आम हैं। दिन गर्म रह सकता है और रात ठंडी।",
+      "sw": "Sehemu kubwa ya nyanda hizi ina misimu miwili ya mvua na usiku wa baridi. Mawio ya marehemu, kutu, na funza wa shina la mahindi ni wa kawaida. Mchana unaweza kuwa na joto wakati usiku unakaa baridi."
+    },
+    "irrigation": {
+      "en": "Many fields are rainfed. Where you can water, water the base in the morning. Mulch holds moisture and stops soil splash.",
+      "hi": "कई खेत बारिश पर निर्भर हैं। जहाँ पानी दे सकें, सुबह जड़ के पास दें। मल्च नमी रखता है और मिट्टी के छींटे रोकता है।",
+      "sw": "Mashamba mengi yanategemea mvua. Unapoweza kumwagilia, mwagilia shina asubuhi. Matandazo huhifadhi unyevu na kuzuia mruko wa udongo."
+    },
+    "input_access": {
+      "en": "The input shop may be a long walk away. Clean planting material, rogueing, and residue removal matter more when a spray is hard to get. Ask the extension officer or agrovet to confirm any product and the dose on its label.",
+      "hi": "दुकान दूर हो सकती है। जब छिड़काव मुश्किल हो तो साफ बीज, बीमार पौधे हटाना और अवशेष साफ करना ज़्यादा मायने रखता है। किसी भी दवा और डिब्बे की मात्रा की पुष्टि कृषि अधिकारी या एग्रोवेट से कराएँ।",
+      "sw": "Duka la pembejeo linaweza kuwa mbali. Mbegu safi, kung'oa mimea mbaya, na kuondoa mabaki ni muhimu zaidi dawa inapokuwa ngumu kupata. Muulize ofisa wa ugani au agrovet athibitishe dawa na kipimo cha lebo."
+    }
+  }
+}

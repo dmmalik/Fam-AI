@@ -1,0 +1,1 @@
+"""Local hotspot API."""
