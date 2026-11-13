@@ -34,5 +34,8 @@ netspeed/local.properties
 netspeed/.idea/
 pi/.local/
 netspeed/
+train/data/
+train/runs/
+train/.cache/
 *.tar.gz
 .cursor/
