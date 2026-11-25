@@ -1,0 +1,24 @@
+{
+  "arch": "efficientnet_v2_s",
+  "image_size": 384,
+  "resize": 416,
+  "mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "classes": 38,
+  "input_shape": [
+    1,
+    3,
+    384,
+    384
+  ],
+  "bytes": 81098868,
+  "check_class": "tomato_septoria_leaf_spot"
+}

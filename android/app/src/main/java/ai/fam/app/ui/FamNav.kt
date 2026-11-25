@@ -11,7 +11,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -20,6 +24,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import ai.fam.app.R
+import ai.fam.app.data.FarmerStore
 
 private data class Tab(val route: String, val label: Int, val icon: ImageVector)
 
@@ -32,6 +37,8 @@ private val tabs = listOf(
 @Composable
 fun FamNav() {
     val nav = rememberNavController()
+    val app = LocalContext.current.applicationContext
+    var farmerReady by remember { mutableStateOf(FarmerStore(app).read().ready) }
     val backStack by nav.currentBackStackEntryAsState()
     val destination = backStack?.destination
     val showBar = tabs.any { destination?.hierarchy?.any { node -> node.route == it.route } == true }
@@ -58,7 +65,18 @@ fun FamNav() {
             }
         },
     ) { padding ->
-        NavHost(navController = nav, startDestination = "capture") {
+        NavHost(navController = nav, startDestination = if (farmerReady) "capture" else "welcome") {
+            composable("welcome") {
+                WelcomeScreen(
+                    padding = padding,
+                    onDone = {
+                        farmerReady = true
+                        nav.navigate("capture") {
+                            popUpTo("welcome") { inclusive = true }
+                        }
+                    },
+                )
+            }
             composable("capture") {
                 CaptureScreen(
                     padding = padding,

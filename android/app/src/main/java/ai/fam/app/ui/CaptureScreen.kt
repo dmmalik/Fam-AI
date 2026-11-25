@@ -15,15 +15,17 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -36,6 +38,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
@@ -48,7 +51,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import ai.fam.app.R
 import ai.fam.app.data.CROP_ORDER
-import ai.fam.app.data.ModelDownload
+import ai.fam.app.data.PhotoStep
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import java.io.File
 import java.util.UUID
 import java.util.concurrent.Executors
@@ -87,7 +92,10 @@ fun CaptureScreen(padding: PaddingValues, onOpenResult: (Long) -> Unit) {
             style = MaterialTheme.typography.labelLarge,
             color = MaterialTheme.colorScheme.primary,
         )
-        ModelBanner(onRetry = { ModelDownload.retry(context) })
+        if (state.working) {
+            ProcessingPanel(state.photoPath, state.step)
+            return@Column
+        }
         Text(stringResource(R.string.capture_crop), style = MaterialTheme.typography.titleSmall)
         Row(
             modifier = Modifier.horizontalScroll(rememberScrollState()),
@@ -112,7 +120,7 @@ fun CaptureScreen(padding: PaddingValues, onOpenResult: (Long) -> Unit) {
                 .weight(1f),
         ) {
             if (granted) {
-                CameraPane(enabled = !state.working, onSaved = { file -> viewModel.onFile(file, state.crop) })
+                CameraPane(enabled = true, onSaved = { file -> viewModel.onFile(file, state.crop) })
             } else {
                 Column(
                     modifier = Modifier.align(Alignment.Center),
@@ -125,23 +133,11 @@ fun CaptureScreen(padding: PaddingValues, onOpenResult: (Long) -> Unit) {
                     }
                 }
             }
-            if (state.working) {
-                Column(
-                    modifier = Modifier.align(Alignment.Center),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    CircularProgressIndicator()
-                    Text(
-                        stringResource(R.string.capture_working),
-                        modifier = Modifier.padding(top = 8.dp),
-                    )
-                }
-            }
         }
         state.error?.let { Text(stringResource(it), color = MaterialTheme.colorScheme.error) }
         OutlinedButton(
             onClick = { viewModel.onSample(state.crop) },
-            enabled = !state.working,
+            enabled = true,
             modifier = Modifier
                 .fillMaxWidth()
                 .semantics { contentDescription = "sample-leaf" },
@@ -156,12 +152,56 @@ fun CaptureScreen(padding: PaddingValues, onOpenResult: (Long) -> Unit) {
                     ),
                 )
             },
-            enabled = !state.working,
             modifier = Modifier.fillMaxWidth(),
         ) {
             Text(stringResource(R.string.capture_gallery))
         }
     }
+}
+
+@Composable
+private fun ColumnScope.ProcessingPanel(photoPath: String, step: PhotoStep) {
+    val fraction = when (step) {
+        PhotoStep.SAVED -> 0.25f
+        PhotoStep.LEAF -> 0.55f
+        PhotoStep.REPLY -> 0.8f
+        PhotoStep.READY -> 1f
+    }
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .weight(1f),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        Text(stringResource(R.string.process_title), style = MaterialTheme.typography.titleMedium)
+        if (photoPath.isNotBlank()) {
+            val context = LocalContext.current
+            AsyncImage(
+                model = ImageRequest.Builder(context).data(File(photoPath)).size(480).build(),
+                contentDescription = stringResource(R.string.cd_thumb),
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.size(180.dp),
+            )
+        }
+        LinearProgressIndicator(
+            progress = { fraction },
+            modifier = Modifier.fillMaxWidth(),
+        )
+        StepLine(PhotoStep.SAVED, step, R.string.process_saved)
+        StepLine(PhotoStep.LEAF, step, R.string.process_leaf)
+        StepLine(PhotoStep.REPLY, step, R.string.process_reply)
+        StepLine(PhotoStep.READY, step, R.string.process_ready)
+    }
+}
+
+@Composable
+private fun StepLine(step: PhotoStep, current: PhotoStep, label: Int) {
+    val reached = current.ordinal >= step.ordinal
+    Text(
+        stringResource(label),
+        color = if (reached) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
+        style = if (current == step) MaterialTheme.typography.titleSmall else MaterialTheme.typography.bodyMedium,
+    )
 }
 
 @Composable

@@ -1,0 +1,26 @@
+```mermaid
+flowchart LR
+  subgraph Phone["Android Phone"]
+    UI[Compose UI]
+    Prep[ImagePrep]
+    Leaf[LeafModel TFLite 38]
+    Gemma[Gemma 4 LiteRT-LM]
+    PiC[PiClient]
+    Room[(Room Audit)]
+  end
+  subgraph Pi["Raspberry Pi 5"]
+    API[FastAPI]
+    Vis[Vision factory]
+    LLM[Llama 3.2 1B / template]
+    KB[(kb labels treatments packs)]
+    Audit[(audit.db)]
+  end
+  UI --> Prep --> Leaf
+  Prep --> PiC
+  PiC -->|private Wi-Fi + token| API
+  API --> Vis --> LLM
+  LLM --> KB
+  API --> Audit
+  Leaf --> Gemma
+  Leaf --> Room
+```

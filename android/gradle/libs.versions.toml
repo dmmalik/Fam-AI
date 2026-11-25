@@ -17,6 +17,7 @@ appcompat = "1.7.0"
 exif = "1.3.7"
 junit = "4.13.2"
 litertLm = "0.19.1"
+litert = "2.3.2"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -47,6 +48,7 @@ coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coi
 exifinterface = { group = "androidx.exifinterface", name = "exifinterface", version.ref = "exif" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 litertlm = { group = "com.google.ai.edge.litertlm", name = "litertlm-android", version.ref = "litertLm" }
+litert = { group = "com.google.ai.edge.litert", name = "litert", version.ref = "litert" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

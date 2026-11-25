@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import ai.fam.app.R
 import ai.fam.app.data.DiagnoseOutcome
 import ai.fam.app.data.DiagnoseRepository
+import ai.fam.app.data.PhotoStep
 import ai.fam.app.data.SettingsStore
 import ai.fam.app.data.TokenStore
 import java.io.File
@@ -20,6 +21,8 @@ import kotlinx.coroutines.withContext
 data class CaptureUi(
     val crop: String? = null,
     val working: Boolean = false,
+    val step: PhotoStep = PhotoStep.SAVED,
+    val photoPath: String = "",
     val piConfigured: Boolean = false,
     val error: Int? = null,
     val openId: Long? = null,
@@ -33,6 +36,11 @@ class CaptureViewModel(app: Application) : AndroidViewModel(app) {
     val state: StateFlow<CaptureUi> = _state
 
     init {
+        repository.watch = { step, photo ->
+            _state.update {
+                it.copy(step = step, photoPath = photo?.absolutePath ?: it.photoPath)
+            }
+        }
         refreshMode()
     }
 
@@ -42,7 +50,9 @@ class CaptureViewModel(app: Application) : AndroidViewModel(app) {
 
     fun onFile(file: File, crop: String?) {
         if (_state.value.working) return
-        _state.update { it.copy(working = true, error = null, crop = crop) }
+        _state.update {
+            it.copy(working = true, error = null, crop = crop, step = PhotoStep.SAVED, photoPath = file.absolutePath)
+        }
         viewModelScope.launch {
             val outcome = repository.diagnoseFile(file, crop)
             apply(outcome)
@@ -65,7 +75,9 @@ class CaptureViewModel(app: Application) : AndroidViewModel(app) {
 
     fun onGallery(uri: Uri, crop: String?) {
         if (_state.value.working) return
-        _state.update { it.copy(working = true, error = null, crop = crop) }
+        _state.update {
+            it.copy(working = true, error = null, crop = crop, step = PhotoStep.SAVED, photoPath = "")
+        }
         viewModelScope.launch {
             val outcome = repository.diagnoseUri(uri, crop)
             apply(outcome)
@@ -79,7 +91,9 @@ class CaptureViewModel(app: Application) : AndroidViewModel(app) {
 
     private fun apply(outcome: DiagnoseOutcome) {
         when (outcome) {
-            is DiagnoseOutcome.Ready -> _state.update { it.copy(working = false, openId = outcome.id, error = null) }
+            is DiagnoseOutcome.Ready -> _state.update {
+                it.copy(working = false, step = PhotoStep.READY, openId = outcome.id, error = null)
+            }
             DiagnoseOutcome.Unreadable -> _state.update { it.copy(working = false, error = R.string.error_image) }
             DiagnoseOutcome.ModelMissing -> _state.update { it.copy(working = false, error = R.string.error_model_missing) }
             DiagnoseOutcome.ModelFailed -> _state.update { it.copy(working = false, error = R.string.error_model) }

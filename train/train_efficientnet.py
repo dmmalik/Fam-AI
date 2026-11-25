@@ -16,7 +16,7 @@ from collections import defaultdict
 from pathlib import Path
 
 import torch
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 from torch import nn
 from torch.utils.data import DataLoader, Dataset, WeightedRandomSampler
 from torchvision import models, transforms
@@ -56,9 +56,16 @@ class LeafSet(Dataset):
         return len(self.rows)
 
     def __getitem__(self, index: int):
-        row = self.rows[index]
-        image = Image.open(row["path"]).convert("RGB")
-        return self.transform(image), self.indices[row["label"]]
+        last_error = None
+        for shift in range(6):
+            row = self.rows[(index + shift) % len(self.rows)]
+            try:
+                with Image.open(row["path"]) as image:
+                    image = image.convert("RGB")
+                return self.transform(image), self.indices[row["label"]]
+            except (OSError, UnidentifiedImageError) as error:
+                last_error = error
+        raise last_error
 
 
 def split_rows(rows: list[dict], seed: int) -> tuple[list[dict], list[dict]]:
@@ -152,6 +159,10 @@ def fit(batch: int, epochs: int, workers: int, seed: int) -> None:
     model = build(len(labels)).to(device)
     train_loader = make_loader(train_rows, indices, True, batch, workers)
     val_loader = make_loader(val_rows, indices, False, batch, workers)
+    print(
+        f"train {len(train_rows)} val {len(val_rows)} classes {len(labels)} batch {batch}",
+        flush=True,
+    )
     criterion = nn.CrossEntropyLoss(label_smoothing=0.1)
     optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4, weight_decay=1e-4)
     schedule = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=epochs)

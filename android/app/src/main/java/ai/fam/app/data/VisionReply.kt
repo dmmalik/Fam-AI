@@ -275,6 +275,12 @@ fun shownPlantName(displayName: String, label: String): String {
     return plainName(displayName).ifEmpty { plainName(label) }
 }
 
+fun speechForFarmer(name: String, script: String): String {
+    val who = name.trim()
+    if (who.isEmpty()) return script
+    return "$who. $script"
+}
+
 fun farmerSpeech(title: String, advice: AdviceText?): String {
     val parts = ArrayList<String>()
     val name = plainName(title)

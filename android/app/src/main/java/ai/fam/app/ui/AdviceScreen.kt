@@ -44,7 +44,8 @@ fun AdviceScreen(id: Long?, onBack: () -> Unit) {
         if (!loaded.loaded) return@Scaffold
         val record = loaded.event
         val advice = record?.adviceJson?.let { AdviceText.fromJson(it) }
-        if (record == null || advice == null) {
+        val leafCare = record?.leafAdviceJson?.let { AdviceText.fromJson(it) }?.takeIf { it.useful() }
+        if (record == null || (advice == null && leafCare == null)) {
             Text(
                 stringResource(R.string.advice_missing),
                 modifier = Modifier.padding(padding).padding(16.dp),
@@ -60,28 +61,40 @@ fun AdviceScreen(id: Long?, onBack: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             Text(
-                record.displayName.ifBlank { record.label },
+                record.leafLabel.ifBlank { record.displayName.ifBlank { record.label } },
                 style = MaterialTheme.typography.headlineSmall,
             )
-            if (advice.summary.isNotBlank()) {
-                AdviceBlock(stringResource(R.string.advice_summary), listOf(advice.summary))
+            if (leafCare != null) {
+                Text(stringResource(R.string.result_leaf_steps), style = MaterialTheme.typography.titleMedium)
+                CareBlocks(leafCare)
             }
-            if (advice.immediateActions.isNotEmpty()) {
-                AdviceBlock(stringResource(R.string.advice_immediate), advice.immediateActions)
-            }
-            if (advice.treatment.isNotEmpty()) {
-                AdviceBlock(stringResource(R.string.advice_treatment), advice.treatment)
-            }
-            if (advice.prevention.isNotEmpty()) {
-                AdviceBlock(stringResource(R.string.advice_prevention), advice.prevention)
-            }
-            if (advice.whenToSeekHelp.isNotBlank()) {
-                AdviceBlock(stringResource(R.string.advice_help), listOf(advice.whenToSeekHelp))
+            if (advice != null && advice != leafCare) {
+                Text(stringResource(R.string.settings_section_reply), style = MaterialTheme.typography.titleMedium)
+                CareBlocks(advice)
             }
             if (showsEnglishNote(record.note)) {
                 Text(stringResource(R.string.note_english))
             }
         }
+    }
+}
+
+@Composable
+fun CareBlocks(advice: AdviceText) {
+    if (advice.summary.isNotBlank()) {
+        AdviceBlock(stringResource(R.string.advice_summary), listOf(advice.summary))
+    }
+    if (advice.immediateActions.isNotEmpty()) {
+        AdviceBlock(stringResource(R.string.advice_immediate), advice.immediateActions)
+    }
+    if (advice.treatment.isNotEmpty()) {
+        AdviceBlock(stringResource(R.string.advice_treatment), advice.treatment)
+    }
+    if (advice.prevention.isNotEmpty()) {
+        AdviceBlock(stringResource(R.string.advice_prevention), advice.prevention)
+    }
+    if (advice.whenToSeekHelp.isNotBlank()) {
+        AdviceBlock(stringResource(R.string.advice_help), listOf(advice.whenToSeekHelp))
     }
 }
 

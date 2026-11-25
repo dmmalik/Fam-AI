@@ -28,17 +28,19 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import ai.fam.app.R
 import ai.fam.app.data.LanguageCatalog
+import ai.fam.app.data.speechForFarmer
 import java.util.Locale
 
 @Composable
-fun FarmerListen(script: String, language: String) {
+fun FarmerListen(script: String, language: String, farmerName: String = "") {
     val context = LocalContext.current
+    val spoken = speechForFarmer(farmerName, script)
     val speaker = androidx.compose.runtime.remember(language) { FarmerSpeaker(context, language) }
     DisposableEffect(speaker) {
         onDispose { speaker.shutdown() }
     }
-    LaunchedEffect(speaker.ready, speaker.voiceMissing, script) {
-        if (speaker.ready && !speaker.voiceMissing && script.isNotBlank()) speaker.speak(script)
+    LaunchedEffect(speaker.ready, speaker.voiceMissing, spoken) {
+        if (speaker.ready && !speaker.voiceMissing && spoken.isNotBlank()) speaker.speak(spoken)
     }
     val label = when {
         speaker.voiceMissing -> R.string.listen_add_voice
@@ -51,10 +53,10 @@ fun FarmerListen(script: String, language: String) {
                 when {
                     speaker.speaking -> speaker.stop()
                     speaker.voiceMissing -> openVoiceInstall(context)
-                    else -> speaker.speak(script)
+                    else -> speaker.speak(spoken)
                 }
             },
-            enabled = script.isNotBlank(),
+            enabled = spoken.isNotBlank(),
             modifier = Modifier
                 .fillMaxWidth()
                 .height(64.dp)
@@ -63,7 +65,8 @@ fun FarmerListen(script: String, language: String) {
             Text(stringResource(label), style = MaterialTheme.typography.titleLarge)
         }
         if (speaker.voiceMissing) {
-            Text(stringResource(R.string.listen_no_voice), style = MaterialTheme.typography.bodyLarge)
+            val missing = if (speaker.needsIndia) R.string.listen_india_missing else R.string.listen_no_voice
+            Text(stringResource(missing), style = MaterialTheme.typography.bodyLarge)
         }
     }
 }
@@ -85,6 +88,8 @@ class FarmerSpeaker(context: Context, private val language: String) {
         private set
     var voiceMissing by mutableStateOf(false)
         private set
+    var needsIndia by mutableStateOf(false)
+        private set
 
     private val main = Handler(Looper.getMainLooper())
     private var engine: TextToSpeech? = null
@@ -97,7 +102,9 @@ class FarmerSpeaker(context: Context, private val language: String) {
                 ready = true
                 return@TextToSpeech
             }
-            voiceMissing = !applyLanguage(tts)
+            val applied = applyLanguage(tts)
+            needsIndia = wantsIndianVoice() && !applied
+            voiceMissing = !applied
             tts.setSpeechRate(0.9f)
             tts.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
                 override fun onStart(utteranceId: String?) = onMain { speaking = true }
@@ -127,10 +134,29 @@ class FarmerSpeaker(context: Context, private val language: String) {
         engine = null
     }
 
+    private fun wantsIndianVoice(): Boolean {
+        return LanguageCatalog.ttsTags(app, language).any { it.endsWith("-IN") }
+    }
+
     private fun applyLanguage(tts: TextToSpeech): Boolean {
-        val options = LanguageCatalog.ttsTags(app, language).map { Locale.forLanguageTag(it) }
-        for (locale in options) {
-            val code = tts.setLanguage(locale)
+        val tags = LanguageCatalog.ttsTags(app, language)
+        val voices = tts.voices.orEmpty()
+        val indian = voices.filter { voice ->
+            tags.any { tag ->
+                val locale = Locale.forLanguageTag(tag)
+                voice.locale.language.equals(locale.language, ignoreCase = true) &&
+                    voice.locale.country.equals("IN", ignoreCase = true)
+            }
+        }
+        val chosen = indian.firstOrNull { !it.isNetworkConnectionRequired } ?: indian.firstOrNull()
+        if (chosen != null) {
+            tts.setLanguage(chosen.locale)
+            tts.voice = chosen
+            return true
+        }
+        if (wantsIndianVoice()) return false
+        for (tag in tags) {
+            val code = tts.setLanguage(Locale.forLanguageTag(tag))
             if (code != TextToSpeech.LANG_MISSING_DATA && code != TextToSpeech.LANG_NOT_SUPPORTED) return true
         }
         return false

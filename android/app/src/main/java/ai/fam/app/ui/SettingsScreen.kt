@@ -15,6 +15,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -45,6 +46,10 @@ import ai.fam.app.data.AuditDatabase
 import ai.fam.app.data.DeviceIdStore
 import ai.fam.app.data.AppLanguage
 import ai.fam.app.data.KnowledgeBase
+import ai.fam.app.data.FarmerProfile
+import ai.fam.app.data.FarmerStore
+import ai.fam.app.data.LeafModel
+import ai.fam.app.data.ShareSync
 import ai.fam.app.data.LanguageCatalog
 import ai.fam.app.data.LanguagePackDownload
 import ai.fam.app.data.LanguagePackStore
@@ -89,7 +94,8 @@ fun SettingsScreen(padding: PaddingValues) {
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Text(stringResource(R.string.settings_mode), style = MaterialTheme.typography.titleMedium)
+        FarmerSection()
+        Text(stringResource(R.string.settings_section_answer), style = MaterialTheme.typography.titleMedium)
         ChoiceRow(
             selected = state.mode == "local",
             label = stringResource(R.string.settings_local),
@@ -103,28 +109,33 @@ fun SettingsScreen(padding: PaddingValues) {
             onClick = { viewModel.setMode("pi") },
         )
         Text(stringResource(R.string.settings_mode_help))
+        if (state.mode == "pi") {
+            OutlinedTextField(
+                value = state.address,
+                onValueChange = viewModel::setAddress,
+                label = { Text(stringResource(R.string.settings_address)) },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .semantics { contentDescription = "field-address" },
+            )
+            OutlinedTextField(
+                value = state.token,
+                onValueChange = viewModel::setToken,
+                label = { Text(stringResource(R.string.settings_token)) },
+                singleLine = true,
+                visualTransformation = PasswordVisualTransformation(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .semantics { contentDescription = "field-token" },
+            )
+        }
+        LeafSection()
+        Text(stringResource(R.string.settings_section_reply), style = MaterialTheme.typography.titleMedium)
         ModelBanner(onRetry = viewModel::retryModel)
-        OutlinedTextField(
-            value = state.address,
-            onValueChange = viewModel::setAddress,
-            label = { Text(stringResource(R.string.settings_address)) },
-            singleLine = true,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri),
-            modifier = Modifier
-                .fillMaxWidth()
-                .semantics { contentDescription = "field-address" },
-        )
-        OutlinedTextField(
-            value = state.token,
-            onValueChange = viewModel::setToken,
-            label = { Text(stringResource(R.string.settings_token)) },
-            singleLine = true,
-            visualTransformation = PasswordVisualTransformation(),
-            modifier = Modifier
-                .fillMaxWidth()
-                .semantics { contentDescription = "field-token" },
-        )
-        Text(stringResource(R.string.settings_language), style = MaterialTheme.typography.titleMedium)
+        Text(stringResource(R.string.settings_section_place), style = MaterialTheme.typography.titleMedium)
+        Text(stringResource(R.string.settings_language), style = MaterialTheme.typography.titleSmall)
         state.languages.forEach { language ->
             ChoiceRow(
                 selected = state.language == language.code,
@@ -162,7 +173,52 @@ fun SettingsScreen(padding: PaddingValues) {
 }
 
 @Composable
-private fun ChoiceRow(selected: Boolean, label: String, onClick: () -> Unit, description: String = "") {
+private fun FarmerSection() {
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val store = remember { FarmerStore(context) }
+    var profile by remember { mutableStateOf(store.read()) }
+    Text(stringResource(R.string.settings_section_farmer), style = MaterialTheme.typography.titleMedium)
+    Text(profile.name.ifBlank { stringResource(R.string.welcome_name) })
+    Text(profile.mobile)
+    Text(
+        stringResource(
+            if (profile.role == FarmerProfile.ROLE_REGISTERED) R.string.welcome_register else R.string.welcome_guest,
+        ),
+    )
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Checkbox(
+            checked = profile.shareTraining,
+            onCheckedChange = { checked ->
+                if (checked) {
+                    val next = profile.copy(shareTraining = true, pendingRemoteDelete = false)
+                    store.write(next)
+                    profile = store.read()
+                } else {
+                    ShareSync.withdraw(context)
+                    profile = store.read()
+                }
+            },
+        )
+        Text(stringResource(R.string.welcome_share))
+    }
+    Text(stringResource(R.string.welcome_share_help))
+}
+
+@Composable
+private fun LeafSection() {
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val leaf = remember { LeafModel.status(context) }
+    Text(stringResource(R.string.settings_section_leaf), style = MaterialTheme.typography.titleMedium)
+    if (leaf.present) {
+        Text(stringResource(R.string.settings_leaf_body, leaf.classes))
+    } else {
+        Text(stringResource(R.string.settings_leaf_missing))
+    }
+    Text(stringResource(R.string.settings_leaf_about))
+}
+
+@Composable
+fun ChoiceRow(selected: Boolean, label: String, onClick: () -> Unit, description: String = "") {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = if (description.isEmpty()) {

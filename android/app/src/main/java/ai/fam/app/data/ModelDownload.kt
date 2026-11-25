@@ -218,6 +218,7 @@ object ModelDownload {
         val next = readLink(context)
         val becameOnline = next == NetLink.ONLINE && _link.value != NetLink.ONLINE
         _link.value = next
+        if (next == NetLink.ONLINE) ShareSync.flush(context)
         if (!resume || !becameOnline || busy.get()) return
         val now = _state.value
         val waiting = now is ModelFetch.Waiting ||

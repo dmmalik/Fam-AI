@@ -34,8 +34,10 @@ import ai.fam.app.R
 import ai.fam.app.data.AdviceText
 import ai.fam.app.data.AuditDatabase
 import ai.fam.app.data.AuditEvent
+import ai.fam.app.data.FarmerStore
 import ai.fam.app.data.farmerSpeech
 import ai.fam.app.data.shownPlantName
+import ai.fam.app.data.speechForFarmer
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import java.io.File
@@ -90,30 +92,39 @@ fun ResultScreen(id: Long?, onBack: () -> Unit, onAdvice: (Long) -> Unit) {
                 )
             }
             val advice = AdviceText.fromJson(record.adviceJson)
+            val leafCare = AdviceText.fromJson(record.leafAdviceJson)?.takeIf { it.useful() }
+                ?: advice?.takeIf { record.adviceSource == "efficientnet" && it.useful() }
             val named = shownPlantName(record.displayName, record.label)
-            val title = named.ifEmpty { stringResource(R.string.plant_in_photo) }
-            Text(title, style = MaterialTheme.typography.headlineSmall)
+            val title = record.leafLabel.ifBlank { named }.ifEmpty { stringResource(R.string.plant_in_photo) }
+            if (record.leafLabel.isNotBlank()) {
+                Text(
+                    stringResource(
+                        R.string.result_leaf,
+                        record.leafLabel,
+                        (record.leafConfidence * 100).toInt().coerceIn(0, 100),
+                    ),
+                    style = MaterialTheme.typography.titleMedium,
+                )
+                if (record.leafNext.isNotBlank()) {
+                    Text(stringResource(R.string.result_leaf_also, record.leafNext))
+                }
+            } else if (named.isNotEmpty()) {
+                Text(title, style = MaterialTheme.typography.headlineSmall)
+            }
+            if (leafCare != null) {
+                Text(stringResource(R.string.result_leaf_steps), style = MaterialTheme.typography.titleMedium)
+                CareBlocks(leafCare)
+            }
+            val appContext = LocalContext.current.applicationContext
+            val farmerName = remember(appContext) { FarmerStore(appContext).read().name }
             FarmerListen(
-                script = farmerSpeech(title, advice),
+                script = speechForFarmer(farmerName, farmerSpeech(title, leafCare ?: advice)),
                 language = record.language,
             )
             Fact(stringResource(R.string.result_severity), severityName(record.severity))
-            if (advice != null) {
-                if (advice.summary.isNotBlank()) {
-                    AdviceBlock(stringResource(R.string.advice_summary), listOf(advice.summary))
-                }
-                if (advice.immediateActions.isNotEmpty()) {
-                    AdviceBlock(stringResource(R.string.advice_immediate), advice.immediateActions)
-                }
-                if (advice.treatment.isNotEmpty()) {
-                    AdviceBlock(stringResource(R.string.advice_treatment), advice.treatment)
-                }
-                if (advice.prevention.isNotEmpty()) {
-                    AdviceBlock(stringResource(R.string.advice_prevention), advice.prevention)
-                }
-                if (advice.whenToSeekHelp.isNotBlank()) {
-                    AdviceBlock(stringResource(R.string.advice_help), listOf(advice.whenToSeekHelp))
-                }
+            if (advice != null && advice != leafCare) {
+                Text(stringResource(R.string.settings_section_reply), style = MaterialTheme.typography.titleMedium)
+                CareBlocks(advice)
             }
             when (baseNote(record.note)) {
                 "health" -> Text(stringResource(R.string.note_health))

@@ -2,8 +2,10 @@
 
 Overlapping diseases share one class id with kb/labels.json so a later
 EfficientNet export can line up with the Pi label order. Crops that are not
-in that list keep their own ids. Multi-crop names stay prefixed with field_,
-because labels such as Rust and Black-Rot are not the maize or apple classes.
+in that list keep their own ids. The multi-crop zip uses the YOLO class names
+in data.yaml, which already include the crop. The insect parquet set is left
+out: its labels are bare integers and the train, validation, and test files
+do not share one class list.
 """
 
 from __future__ import annotations
@@ -157,7 +159,54 @@ SOY = {
 
 FIELD_ALIAS = {
     "whitefly": "pest_whitefly",
+    "chilli_whitefly": "pest_whitefly",
 }
+
+CASSAVA = {
+    0: "cassava_bacterial_blight",
+    1: "cassava_brown_streak",
+    2: "cassava_green_mottle",
+    3: "cassava_mosaic",
+    4: "cassava_healthy",
+}
+
+# Brown spot is not brown streak, and green mite is not green mottle.
+CCMT = {
+    ("cassava", "bacterial blight"): "cassava_bacterial_blight",
+    ("cassava", "brown spot"): "cassava_brown_spot",
+    ("cassava", "green mite"): "cassava_green_mite",
+    ("cassava", "healthy"): "cassava_healthy",
+    ("cassava", "mosaic"): "cassava_mosaic",
+    ("maize", "fall armyworm"): "pest_fall_armyworm",
+    ("maize", "grasshoper"): "pest_grasshopper",
+    ("maize", "healthy"): "maize_healthy",
+    ("maize", "leaf beetle"): "pest_leaf_beetle",
+    ("maize", "leaf blight"): "maize_leaf_blight",
+    ("maize", "leaf spot"): "maize_leaf_spot",
+    ("maize", "streak virus"): "maize_streak_virus",
+    ("tomato", "healthy"): "tomato_healthy",
+    ("tomato", "leaf blight"): "tomato_leaf_blight",
+    ("tomato", "leaf curl"): "tomato_yellow_leaf_curl",
+    ("tomato", "septoria leaf spot"): "tomato_septoria_leaf_spot",
+    ("tomato", "verticulium wilt"): "tomato_verticillium_wilt",
+    ("cashew", "anthracnose"): "cashew_anthracnose",
+    ("cashew", "gumosis"): "cashew_gummosis",
+    ("cashew", "healthy"): "cashew_healthy",
+    ("cashew", "leaf miner"): "cashew_leaf_miner",
+    ("cashew", "red rust"): "cashew_red_rust",
+}
+
+RICE_ALIAS = {
+    "bacterialblight": "rice_bacterial_blight",
+    "bacterial_leaf_blight": "rice_bacterial_blight",
+    "blast": "rice_blast",
+    "brownspot": "rice_brown_spot",
+    "brown_spot": "rice_brown_spot",
+    "tungro": "rice_tungro",
+    "normal": "rice_healthy",
+}
+
+EXTRA = DATA / "extra"
 
 
 def slug(name: str) -> str:
@@ -200,8 +249,29 @@ def image_path(folder: Path, stem: str, raw: bytes) -> Path:
     return path
 
 
+def reuse_source(rows: list[dict], source: str, minimum: int) -> bool:
+    manifest = DATA / "manifest.csv"
+    if not manifest.exists():
+        return False
+    kept = 0
+    with manifest.open() as handle:
+        for row in csv.DictReader(handle):
+            if row["source"] != source or not Path(row["path"]).is_file():
+                continue
+            add(rows, source, row["label"], Path(row["path"]), row.get("split") or "")
+            kept += 1
+    if kept < minimum:
+        if kept:
+            del rows[-kept:]
+        return False
+    print(f"{source} reused {kept}", flush=True)
+    return True
+
+
 def from_plantvillage(rows: list[dict]) -> None:
     parquets = sorted(ZIPS.glob("plantvillage-train-*.parquet"))
+    if len(parquets) >= 13 and reuse_source(rows, "plantvillage", 50000):
+        return
     if len(parquets) >= 13:
         dest = EXTRACTED / "plantvillage"
         dest.mkdir(parents=True, exist_ok=True)
@@ -227,6 +297,12 @@ def from_plantvillage(rows: list[dict]) -> None:
         add(rows, "plantvillage", label, path)
 
 
+def soy_key(folder: str) -> str:
+    text = folder.strip().lower().replace("_", " ")
+    text = re.sub(r"^\d+\s*[\.\-_]+\s*", "", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
 def from_soybean(rows: list[dict]) -> None:
     archive = ZIPS / "soybean.zip"
     if not archive.exists():
@@ -234,12 +310,26 @@ def from_soybean(rows: list[dict]) -> None:
         return
     dest = EXTRACTED / "soybean"
     unzip("soybean.zip", dest)
+    seen = 0
+    unknown: set[str] = set()
     for path in walk_images(dest):
-        folder = path.parent.name.strip().lower()
-        label = SOY.get(folder)
+        # "Leaf Images All (Raw)" repeats the class folders.
+        if any("raw" in part.lower() for part in path.parts):
+            continue
+        label = None
+        for part in reversed(path.parts):
+            key = soy_key(part)
+            label = SOY.get(key)
+            if label is not None:
+                break
         if label is None:
-            label = "soybean_" + slug(folder)
+            unknown.add(path.parent.name)
+            continue
         add(rows, "soybean", label, path)
+        seen += 1
+    print(f"soybean images {seen}", flush=True)
+    if unknown:
+        print("soybean unlabeled " + ", ".join(sorted(unknown)), flush=True)
 
 
 def multicrop_classes(root: Path) -> list[str]:
@@ -288,7 +378,22 @@ def filename_label(name: str) -> str | None:
 
 def field_id(raw: str) -> str:
     key = slug(raw)
-    return FIELD_ALIAS.get(key, "field_" + key)
+    return FIELD_ALIAS.get(key, key)
+
+
+def official_split(path: Path) -> str:
+    parts = {part.lower() for part in path.parts}
+    if parts & {"test", "testing", "valid", "val", "validation"}:
+        return "test"
+    if parts & {"train", "training"}:
+        return "train"
+    return ""
+
+
+def label_file(path: Path) -> Path:
+    if path.parent.name.lower() == "images":
+        return path.parent.parent / "labels" / f"{path.stem}.txt"
+    return path.with_suffix(".txt")
 
 
 def from_multicrop(rows: list[dict]) -> None:
@@ -300,15 +405,24 @@ def from_multicrop(rows: list[dict]) -> None:
     unzip("multicrop.zip", dest)
     names = multicrop_classes(dest)
     print(f"multicrop class file entries: {len(names)}", flush=True)
+    seen = 0
+    skipped = 0
     for path in walk_images(dest):
-        raw = filename_label(path.name)
-        if raw is None and names:
-            txt = path.with_suffix(".txt")
-            if txt.exists():
-                raw = yolo_label(txt, names)
+        raw = None
+        txt = label_file(path)
+        labeled = txt.exists()
+        if names and labeled:
+            raw = yolo_label(txt, names)
+        elif not labeled:
+            raw = filename_label(path.name)
+            if raw and raw.lower() == "img":
+                raw = None
         if not raw:
+            skipped += 1
             continue
-        add(rows, "multicrop", field_id(raw), path)
+        add(rows, "multicrop", field_id(raw), path, official_split(path))
+        seen += 1
+    print(f"multicrop images {seen} skipped {skipped}", flush=True)
 
 
 def plantdoc_label(value) -> str:
@@ -319,6 +433,8 @@ def plantdoc_label(value) -> str:
 
 
 def from_plantdoc(rows: list[dict]) -> None:
+    if reuse_source(rows, "plantdoc", 2500):
+        return
     dest = EXTRACTED / "plantdoc"
     dest.mkdir(parents=True, exist_ok=True)
     files = sorted(ZIPS.glob("plantdoc-train-*.parquet"))
@@ -343,12 +459,103 @@ def from_plantdoc(rows: list[dict]) -> None:
     print(f"plantdoc images {seen}", flush=True)
 
 
+def from_cassava(rows: list[dict]) -> None:
+    root = EXTRA / "cassava"
+    table = root / "train.csv"
+    if not table.exists():
+        print("cassava not ready, skipping", flush=True)
+        return
+    images = {}
+    for path in (root / "train_images").rglob("*"):
+        if is_image(path):
+            images[path.name] = path
+    missing = 0
+    seen = 0
+    with table.open() as handle:
+        for row in csv.DictReader(handle):
+            path = images.get(row["image_id"])
+            if path is None:
+                missing += 1
+                continue
+            add(rows, "cassava", CASSAVA[int(row["label"])], path)
+            seen += 1
+    print(f"cassava images {seen} missing {missing}", flush=True)
+
+
+def from_ccmt(rows: list[dict]) -> None:
+    root = EXTRA / "ccmt" / "CCMTDataset"
+    if not root.exists():
+        print("ccmt not ready, skipping", flush=True)
+        return
+    seen = 0
+    for path in walk_images(root):
+        crop = path.parent.parent.name.strip().lower()
+        kind = path.parent.name.strip().lower()
+        label = CCMT.get((crop, kind))
+        if label is None:
+            label = slug(crop) + "_" + slug(kind)
+        add(rows, "ccmt", label, path)
+        seen += 1
+    print(f"ccmt images {seen}", flush=True)
+
+
+def parquet_class_names(path: Path) -> list[str]:
+    raw = pq.ParquetFile(path).schema_arrow.metadata[b"huggingface"]
+    info = json.loads(raw)
+    names = info["info"]["features"]["label"].get("names")
+    if not names:
+        raise ValueError(f"{path.name} has no class names")
+    return list(names)
+
+
+def rice_label(name: str) -> str:
+    key = slug(name)
+    return RICE_ALIAS.get(key, "rice_" + key)
+
+
+def from_rice_parquet(rows: list[dict], source: str) -> None:
+    if reuse_source(rows, source, 5000):
+        return
+    folder = EXTRA / source
+    files = sorted(folder.glob("*.parquet"))
+    if not files:
+        print(f"{source} not ready, skipping", flush=True)
+        return
+    names = parquet_class_names(files[0])
+    dest = EXTRACTED / source
+    dest.mkdir(parents=True, exist_ok=True)
+    seen = 0
+    for parquet in files:
+        handle = pq.ParquetFile(parquet)
+        for group in range(handle.num_row_groups):
+            table = handle.read_row_group(group, columns=["image", "label"])
+            labels = table.column("label").to_pylist()
+            images = table.column("image").to_pylist()
+            for index, (label, image) in enumerate(zip(labels, images)):
+                raw = image.get("bytes") if isinstance(image, dict) else image
+                if not raw:
+                    continue
+                path = image_path(dest, f"{parquet.stem}-g{group}-{index}", raw)
+                add(rows, source, rice_label(names[int(label)]), path)
+                seen += 1
+            print(f"{source} {parquet.name} group {group} kept {seen}", flush=True)
+    print(f"{source} images {seen}", flush=True)
+
+
 def main() -> None:
     rows: list[dict] = []
     from_plantvillage(rows)
     from_soybean(rows)
     from_multicrop(rows)
     from_plantdoc(rows)
+    from_cassava(rows)
+    from_ccmt(rows)
+    from_rice_parquet(rows, "rice-india")
+    from_rice_parquet(rows, "paddy-doctor")
+    print(
+        "insect-pests skipped: labels are integers with no names, and the splits do not share one class list",
+        flush=True,
+    )
     counts: dict[str, int] = defaultdict(int)
     sources: dict[str, int] = defaultdict(int)
     for row in rows:

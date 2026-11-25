@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -35,6 +37,21 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
+    }
+
+    val localProperties = Properties()
+    val localFile = rootProject.file("local.properties")
+    if (localFile.exists()) {
+        localFile.inputStream().use { localProperties.load(it) }
+    }
+    val shareKey = (localProperties.getProperty("FAM_SHARE_KEY") ?: "")
+        .replace("\\", "\\\\")
+        .replace("\"", "\\\"")
+    defaultConfig.buildConfigField("String", "FAM_SHARE_KEY", "\"$shareKey\"")
+
+    androidResources {
+        noCompress += "tflite"
     }
 
     packaging {
@@ -77,6 +94,7 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.exifinterface)
     implementation(libs.litertlm)
+    implementation(libs.litert)
     debugImplementation(libs.compose.ui.tooling)
     testImplementation(libs.junit)
 }

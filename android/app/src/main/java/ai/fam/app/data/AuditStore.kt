@@ -10,6 +10,7 @@ import androidx.room.PrimaryKey
 import androidx.room.Query
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.flow.Flow
 import java.time.Instant
@@ -40,6 +41,10 @@ data class AuditEvent(
     @ColumnInfo(name = "lesion_ratio") val lesionRatio: Double = 0.0,
     @ColumnInfo(name = "advice_json") val adviceJson: String = "",
     val note: String = "",
+    @ColumnInfo(name = "leaf_label") val leafLabel: String = "",
+    @ColumnInfo(name = "leaf_confidence") val leafConfidence: Double = 0.0,
+    @ColumnInfo(name = "leaf_next") val leafNext: String = "",
+    @ColumnInfo(name = "leaf_advice_json") val leafAdviceJson: String = "",
 )
 
 data class HistoryRow(
@@ -72,7 +77,7 @@ interface AuditDao {
     suspend fun find(id: Long): AuditEvent?
 }
 
-@Database(entities = [AuditEvent::class], version = 1, exportSchema = false)
+@Database(entities = [AuditEvent::class], version = 3, exportSchema = false)
 abstract class AuditDatabase : RoomDatabase() {
     abstract fun auditDao(): AuditDao
 
@@ -88,6 +93,7 @@ abstract class AuditDatabase : RoomDatabase() {
                     "fam_ai_audit.db",
                 )
                     .setJournalMode(JournalMode.WRITE_AHEAD_LOGGING)
+                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
                     .addCallback(
                         object : Callback() {
                             override fun onCreate(db: SupportSQLiteDatabase) {
@@ -101,6 +107,20 @@ abstract class AuditDatabase : RoomDatabase() {
                     )
                     .build()
                     .also { instance = it }
+            }
+        }
+
+        private val MIGRATION_1_2 = object : Migration(1, 2) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE audit ADD COLUMN leaf_label TEXT NOT NULL DEFAULT ''")
+                db.execSQL("ALTER TABLE audit ADD COLUMN leaf_confidence REAL NOT NULL DEFAULT 0")
+                db.execSQL("ALTER TABLE audit ADD COLUMN leaf_next TEXT NOT NULL DEFAULT ''")
+            }
+        }
+
+        private val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE audit ADD COLUMN leaf_advice_json TEXT NOT NULL DEFAULT ''")
             }
         }
 
@@ -154,6 +174,10 @@ fun auditEvent(
     lesionRatio: Double = 0.0,
     adviceJson: String = "",
     note: String = "",
+    leafLabel: String = "",
+    leafConfidence: Double = 0.0,
+    leafNext: String = "",
+    leafAdviceJson: String = "",
 ): AuditEvent {
     return AuditEvent(
         time = AuditTime.now(),
@@ -177,5 +201,9 @@ fun auditEvent(
         lesionRatio = lesionRatio,
         adviceJson = adviceJson,
         note = note,
+        leafLabel = leafLabel,
+        leafConfidence = leafConfidence,
+        leafNext = leafNext,
+        leafAdviceJson = leafAdviceJson,
     )
 }

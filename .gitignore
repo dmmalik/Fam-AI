@@ -8,6 +8,7 @@ pi/models/
 *.pte
 *.hef
 *.litertlm
+*.tflite
 *.onnx
 *.pt
 *.pt2

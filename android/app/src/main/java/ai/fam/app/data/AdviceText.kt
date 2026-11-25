@@ -10,6 +10,14 @@ data class AdviceText(
     val prevention: List<String>,
     val whenToSeekHelp: String,
 ) {
+    fun useful(): Boolean {
+        return summary.isNotBlank() ||
+            immediateActions.isNotEmpty() ||
+            treatment.isNotEmpty() ||
+            prevention.isNotEmpty() ||
+            whenToSeekHelp.isNotBlank()
+    }
+
     fun toJson(): String {
         return JSONObject()
             .put("summary", summary)

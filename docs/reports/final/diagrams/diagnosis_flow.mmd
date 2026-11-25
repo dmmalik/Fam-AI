@@ -1,0 +1,18 @@
+```mermaid
+flowchart TD
+  A[Capture / Gallery] --> B[ImagePrep JPEG 768 q80]
+  B --> C[Bundled EfficientNet predict]
+  C --> D{Pi mode and health OK?}
+  D -->|Yes| E[POST /v1/diagnose]
+  E --> F[Vision mock/cpu/hailo]
+  F --> G[Severity]
+  G --> H[Llama or template advice]
+  H --> I[Audit + response]
+  D -->|No| J{Gemma downloaded?}
+  J -->|Yes| K[On-device Gemma 4]
+  J -->|No| L[EfficientNet + LeafCare/KB]
+  I --> M[Result + Advice screens]
+  K --> M
+  L --> M
+  M --> N[Listen / History / optional share]
+```
